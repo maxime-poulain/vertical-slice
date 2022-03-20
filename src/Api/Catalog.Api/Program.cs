@@ -22,6 +22,8 @@ app.UseStaticFiles();
 
 app.UseAuthorization();
 
+app.UseMiddlewares();
+
 app.MapControllers();
 
 app.Run();
