@@ -1,12 +1,15 @@
 using Catalog.Api.Extensions;
+using Catalog.Api.Dependency;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDependencies(builder.Configuration);
+
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options => options.EnableAnnotations());
+builder.Services.AddSwagger(builder.Configuration);
 
 var app = builder.Build();
 
