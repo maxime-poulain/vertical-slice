@@ -1,4 +1,5 @@
-﻿using Catalog.Api.Endpoints;
+using Catalog.Api.Application.MediatR;
+using Catalog.Api.Endpoints;
 
 namespace Catalog.Api.Middleware;
 
@@ -19,7 +20,8 @@ public class GlobalExceptionHandler
         }
         catch (Exception exception)
         {
-            logger.LogError(exception, "An uncaught exception occurred while executing: {url}", context.Request.Path);
+            if (exception is not LoggedMediatRException)
+                logger.LogError(exception, "An uncaught exception occurred while executing: {url}", context.Request.Path);
 
             context.Response.StatusCode = 500;
             var errorResponse = new ErrorResponse();
