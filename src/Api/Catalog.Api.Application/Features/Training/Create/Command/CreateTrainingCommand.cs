@@ -1,52 +1,42 @@
-﻿using Catalog.Api.Domain.CQS;
+﻿using Catalog.Api.Application.Features.Training.Common.CreateEdit;
+using Catalog.Api.Domain.Entities.Base;
 using Catalog.Api.Domain.Enumerations.Training;
 using Catalog.Api.EfCore.Context;
-using Catalog.Api.EfCore.Extensions;
 
 namespace Catalog.Api.Application.Features.Training.Create.Command;
 
-public class CreateTrainingCommand : ICommand<CreatedTrainingDto>
+public class CreateTrainingCommand : CreateEditTrainingCommonCommand<CreatedTrainingDto>
 {
-    public string? Title { get; set; }
-
-    public string? Description { get; set; }
-
-    public string? Goal { get; set; }
-
-    public int TrainingTypeId { get; set; }
 }
 
-public class CreateTrainingCommandHandler : ICommandHandler<CreateTrainingCommand, CreatedTrainingDto>
+public class CreateTrainingCommandHandler : CreateEditTrainingCommonCommandHandler<CreateTrainingCommand, CreatedTrainingDto>
 {
-    private readonly CatalogContext _catalogContext;
 
-    public CreateTrainingCommandHandler(CatalogContext catalogContext)
+    public CreateTrainingCommandHandler(CatalogContext catalogContext) : base(catalogContext)
     {
-        _catalogContext = catalogContext;
+
     }
 
-    public async Task<CreatedTrainingDto> Handle(CreateTrainingCommand command, CancellationToken cancellationToken)
+    protected override Task<Domain.Entities.Training> GetOrMakeTrainingAsync(CreateTrainingCommand command)
     {
-        // Setup the training entity to add in the database.
-        var training = MakeTraining(command);
+        var training = new Domain.Entities.Training(command.Title!,
+            command.Description!,
+            command.Goal!,
+            TrainingType.FromValue(command.TrainingTypeId));
 
-        // Attach the training creation event.
-        training.DomainEvents.Add(new TrainingCreatedEvent(training));
+        return Task.FromResult(training);
+    }
 
-        // Insert into the database the training.
-        await _catalogContext.InsertAsync(training, cancellationToken);
+    protected override IDomainEvent DomainEventForCurrentOperation(Domain.Entities.Training training)
+    {
+        return new TrainingCreatedEvent(training);
+    }
 
+    protected override CreatedTrainingDto MakeResult(Domain.Entities.Training training)
+    {
         return new CreatedTrainingDto()
         {
             TrainingId = training.Id
         };
-    }
-
-    private Domain.Entities.Training MakeTraining(CreateTrainingCommand request)
-    {
-        return new Domain.Entities.Training(request.Title!,
-            request.Description!,
-            request.Goal!,
-            TrainingType.FromValue(request.TrainingTypeId));
     }
 }
