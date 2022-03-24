@@ -21,10 +21,5 @@ public class TrainingConfiguration : EntityConfiguration<Training>
         entityTypeBuilder.Property(training => training.Goal)
             .HasMaxLength(500)
             .IsRequired();
-
-        entityTypeBuilder
-            .Property(training => training.TrainingType)
-            .HasConversion(trainingType => trainingType.Value,
-                value => TrainingType.FromValue(value));
     }
 }

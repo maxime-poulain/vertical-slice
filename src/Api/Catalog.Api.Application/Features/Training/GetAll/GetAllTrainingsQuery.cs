@@ -24,7 +24,6 @@ public class GetAllTrainingsQueryHandler : IQueryHandler<GetAllTrainingsQuery, I
                 Id           = training.Id,
                 Title        = training.Title,
                 Description  = training.Description,
-                TrainingType = training.TrainingType.Value
             }).ToListAsync(cancellationToken);
     }
 }

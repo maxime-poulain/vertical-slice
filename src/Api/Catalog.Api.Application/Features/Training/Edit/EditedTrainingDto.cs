@@ -9,8 +9,4 @@ public record EditedTrainingDto
     public string Description { get; init; } = null!;
 
     public string Goal { get; init; } = null!;
-
-    public int TrainingTypeId { get; init; }
-
-    public string? TrainingTypeDescription { get; init; }
 }

@@ -50,15 +50,19 @@ public abstract class CreateEditTrainingCommonCommandHandler<TCommand, TResponse
 
         await CatalogContext.SaveChangesAsync(cancellationToken);
         return MakeResult(training);
-
     }
+
     private void UpdateFields(Domain.Entities.Training training, CreateEditTrainingCommonCommand<TResponse> command)
     {
         // Those fields cannot be null, the validation asserts that.
         training.ChangeTitle(command.Title!);
         training.ChangeDescription(command.Description!);
-        training.ChangeType(TrainingType.FromValue(command.TrainingTypeId));
         training.ChangeGoal(command.Goal!);
 
+        // Many to many tables.
+        training.SetTopics(command.Topics);
+        training.SetAttendance(command.Attendances);
+        training.SetVatJustifications(command.VatJustifications);
+        training.SetAudience(command.Audiences);
     }
 }

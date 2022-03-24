@@ -21,8 +21,7 @@ public class CreateTrainingCommandHandler : CreateEditTrainingCommonCommandHandl
     {
         var training = new Domain.Entities.Training(command.Title!,
             command.Description!,
-            command.Goal!,
-            TrainingType.FromValue(command.TrainingTypeId));
+            command.Goal!);
 
         return Task.FromResult(training);
     }

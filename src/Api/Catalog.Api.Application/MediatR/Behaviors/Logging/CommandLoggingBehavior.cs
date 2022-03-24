@@ -20,6 +20,7 @@ public class CommandLoggingBehavior<TCommand, TResponse> : IPipelineBehavior<TCo
     public async Task<TResponse> Handle(TCommand command, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
     {
         _logger.LogInformation("Processing command `{command}`. TraceId `{id}`", command.GetGenericTypeName(), _commandId);
+        _logger.LogInformation(JsonSerializer.Serialize(command));
         try
         {
             return await next();

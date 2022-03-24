@@ -10,5 +10,11 @@ public abstract class CreateEditTrainingCommonCommand<TResponse> : ICommand<TRes
 
     public string? Goal { get; set; }
 
-    public int TrainingTypeId { get; set; }
+    public List<int>? Topics { get; set; }
+
+    public List<int>? Attendances { get; set; }
+
+    public List<int>? VatJustifications { get; set; }
+
+    public List<int>? Audiences { get; set; }
 }

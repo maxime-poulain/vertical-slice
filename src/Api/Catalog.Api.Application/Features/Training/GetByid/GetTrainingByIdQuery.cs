@@ -26,9 +26,7 @@ public class GetTrainingByIdQueryHandler : IQueryHandler<GetTrainingByIdQuery, T
         {
             Title                   = training.Title,
             Description             = training.Description,
-            Id                      = training.Id,
-            TrainingTypeDescription = TrainingType.FromValue(training.TrainingType.Value).Name,
-            TrainingTypeId          = training.TrainingType.Value
+            Id                      = training.Id
         } : null;
     }
 }

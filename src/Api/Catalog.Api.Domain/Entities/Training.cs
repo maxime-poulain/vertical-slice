@@ -31,30 +31,36 @@ public class Training : Entity, IEntity
         init => ChangeGoal(value);
     }
 
-    private TrainingType _trainingType;
+    private readonly HashSet<TrainingAssignment> _assignments;
+    private readonly HashSet<TrainingAudience> _audiences;
+    private readonly HashSet<TrainingTopic> _topics;
+    private readonly HashSet<TrainingAttendance> _attendances;
+    private readonly HashSet<TrainingVatJustification> _vatJustifiations;
 
-    public TrainingType TrainingType
-    {
-        get  => _trainingType;
-        init => ChangeType(value);
-    }
+    public IReadOnlySet<TrainingAudience> Audiences => _audiences;
 
-    private readonly List<TrainingAssignment> _assignments;
+    public IReadOnlySet<TrainingAttendance> Attendances => _attendances;
 
-    public IReadOnlyList<TrainingAssignment> Assignments => _assignments.AsReadOnly();
+    public IReadOnlySet<TrainingAssignment> Assignments => _assignments;
 
+    public IReadOnlySet<TrainingTopic> Topics => _topics;
+
+    public IReadOnlySet<TrainingVatJustification> VatJustifications => _vatJustifiations;
 
     private Training()
     {
-        _assignments = new List<TrainingAssignment>();
+        _assignments      = new HashSet<TrainingAssignment>();
+        _topics           = new HashSet<TrainingTopic>();
+        _attendances      = new HashSet<TrainingAttendance>();
+        _vatJustifiations = new HashSet<TrainingVatJustification>();
+        _audiences        = new HashSet<TrainingAudience>();
     }
 
-    public Training(string title, string description, string goal, TrainingType trainingType) : this()
+    public Training(string title, string description, string goal) : this()
     {
         Title        = title;
         Description  = description;
         Goal         = goal;
-        TrainingType = trainingType;
     }
 
     public TrainingAssignment Assign(Trainer trainer)
@@ -86,8 +92,43 @@ public class Training : Entity, IEntity
         _goal = Guard.Against.Between(goal, 30, 500, nameof(goal));
     }
 
-    public void ChangeType(TrainingType trainingType)
+    public void SetAttendance(IEnumerable<int>? attendances)
     {
-        _trainingType = trainingType;
+        SetAttendance(attendances?.Select(Attendance.FromValue));
+    }
+
+    public void SetAttendance(IEnumerable<Attendance>? attendances)
+    {
+        SetRelational(attendances, attendance => new TrainingAttendance(this, attendance), _attendances);
+    }
+
+    public void SetAudience(List<int>? requestAudiences)
+    {
+        SetAudience(requestAudiences?.Select(Audience.FromValue));
+    }
+
+    public void SetAudience(IEnumerable<Audience>? audiences)
+    {
+        SetRelational(audiences, audience => new TrainingAudience(this, audience), _audiences);
+    }
+
+    public void SetTopics(IEnumerable<int>? topics)
+    {
+        SetTopics(topics?.Select(Topic.FromValue));
+    }
+
+    public void SetTopics(IEnumerable<Topic>? topics)
+    {
+        SetRelational(topics, topic => new TrainingTopic(this, topic), _topics);
+    }
+
+    public void SetVatJustifications(IEnumerable<int>? vatJustificationIds)
+    {
+        SetVatJustifications(vatJustificationIds?.Select(VatJustification.FromValue));
+    }
+
+    public void SetVatJustifications(IEnumerable<VatJustification>? vatJustifications)
+    {
+        SetRelational(vatJustifications, vat => new TrainingVatJustification(this, vat), _vatJustifiations);
     }
 }

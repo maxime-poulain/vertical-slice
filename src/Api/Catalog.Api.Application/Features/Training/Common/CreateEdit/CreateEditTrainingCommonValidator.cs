@@ -30,8 +30,16 @@ public abstract class CreateEditTrainingCommonValidator<T, TResponse> : Abstract
             .MaximumLength(500)
             .WithMessage("Description cannot exceed 500 characters");
 
-        RuleFor(createTrainingCommand => createTrainingCommand.TrainingTypeId)
-            .EnumerationExists<T, TrainingType>()
-            .WithMessage(createTrainingCommand => $"Unknown training type {createTrainingCommand.TrainingTypeId}");
+        RuleFor(command => command.Topics)
+            .AllEnumerationExists<T, Topic>();
+
+        RuleFor(command => command.Audiences)
+            .AllEnumerationExists<T, Audience>();
+
+        RuleFor(command => command.VatJustifications)
+            .AllEnumerationExists<T, VatJustification>();
+
+        RuleFor(command => command.Attendances)
+            .AllEnumerationExists<T, Attendance>();
     }
 }

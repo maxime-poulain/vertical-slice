@@ -36,9 +36,7 @@ public class EditTrainingCommandHandler : CreateEditTrainingCommonCommandHandler
             Title                   = training.Title,
             Description             = training.Description,
             Goal                    = training.Goal,
-            TrainingId              = training.Id,
-            TrainingTypeDescription = training.TrainingType.Name,
-            TrainingTypeId          = training.TrainingType.Value
+            TrainingId              = training.Id
         };
     }
 

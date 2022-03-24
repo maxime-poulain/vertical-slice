@@ -7,8 +7,4 @@ public class TrainingByIdDto
     public string? Description { get; set; }
 
     public string? Title { get; set; }
-
-    public string? TrainingTypeDescription { get; set; }
-
-    public int TrainingTypeId { get; set; }
 }
