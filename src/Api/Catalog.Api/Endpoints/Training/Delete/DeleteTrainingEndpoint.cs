@@ -17,7 +17,7 @@ public class TrainingDeletionEndpoint : EndpointBaseAsync.WithRequest<DeleteTrai
 
     [HttpDelete("training/{Id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     [SwaggerOperation(
         Summary     = "Deletes a training",

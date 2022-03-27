@@ -21,7 +21,7 @@ public class DeleteTrainerEndpoint : EndpointBaseAsync.WithRequest<DeleteTrainer
         OperationId = "Trainer.Delete",
         Tags = new []{ "Trainer" })]
     [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     public override async Task<ActionResult> HandleAsync([FromRoute] DeleteTrainerCommand command, CancellationToken cancellationToken = default)
     {

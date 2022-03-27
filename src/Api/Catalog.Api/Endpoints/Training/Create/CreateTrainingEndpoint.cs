@@ -17,7 +17,7 @@ public class TrainingCreationEndpoint : Ardalis.ApiEndpoints.EndpointBaseAsync.W
 
     [HttpPost("training")]
     [ProducesResponseType(typeof(CreatedTrainingDto), StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     [SwaggerOperation(
         Summary     = "Creates a new training",

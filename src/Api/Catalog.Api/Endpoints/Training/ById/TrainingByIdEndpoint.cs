@@ -23,7 +23,8 @@ public class TrainingByIdEndpoint : EndpointBaseAsync.WithRequest<GetTrainingByI
         Tags        = new[] { "Training" })
     ]
     [ProducesResponseType(typeof(TrainingByIdDto), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     public override async Task<ActionResult<TrainingByIdDto>> HandleAsync([FromRoute] GetTrainingByIdQuery request, CancellationToken cancellationToken = default)
     {
         var training = await _mediator.Send(request, cancellationToken);

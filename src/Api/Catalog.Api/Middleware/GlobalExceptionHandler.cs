@@ -20,12 +20,18 @@ public class GlobalExceptionHandler
         }
         catch (Exception exception)
         {
+            // See LoggedMediatRException for explanation.
             if (exception is not LoggedMediatRException)
+            {
                 logger.LogError(exception, "An uncaught exception occurred while executing: {url}", context.Request.Path);
+            }
 
             context.Response.StatusCode = 500;
-            var errorResponse = new ErrorResponse();
-            errorResponse.Errors.Add(new Error() { ErrorCode = "-9999", ErrorMessage = "Unexpected server error" });
+            var errorResponse = new ErrorResponse()
+            {
+                Status = 500,
+                Errors = new[] { new Error("", "An expected error occurred while processing the request. Try again later.", null) }
+            };
             await context.Response.WriteAsJsonAsync(errorResponse);
         }
     }

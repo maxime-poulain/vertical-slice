@@ -22,7 +22,6 @@ public class AssignmentsByTrainerEndpoint : EndpointBaseAsync.WithRequest<GetAss
         OperationId = "Trainer.Assignment.ById",
         Tags = new []{ "Assignment" })]
     [ProducesResponseType(typeof(IEnumerable<AssignmentDto>),StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     public override async Task<ActionResult<IEnumerable<AssignmentDto>>> HandleAsync([FromRoute] GetAssignmentsByTrainerIdQuery request, CancellationToken cancellationToken = default)
     {

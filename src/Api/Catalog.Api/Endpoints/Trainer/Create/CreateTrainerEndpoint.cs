@@ -22,7 +22,7 @@ public class TrainerCreationEndpoint : EndpointBaseAsync.WithRequest<CreateTrain
         OperationId = "Trainer.Create",
         Tags = new []{ "Trainer" })]
     [ProducesResponseType(typeof(TrainerCreationResult), StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     public override async Task<ActionResult<TrainerCreationResult>> HandleAsync(CreateTrainerCommand request, CancellationToken cancellationToken = default)
     {

@@ -17,6 +17,7 @@ public class TrainingGetAllEndpoint : EndpointBaseAsync.WithoutRequest.WithActio
 
     [HttpGet("training")]
     [ProducesResponseType(typeof(IEnumerable<TrainingDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     [SwaggerOperation(
         Summary     = "Gets all trainings",
         Description = "Gets all trainings",

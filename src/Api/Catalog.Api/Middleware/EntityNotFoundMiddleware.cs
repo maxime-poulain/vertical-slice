@@ -1,4 +1,6 @@
 ﻿using Catalog.Api.Application.Common.Exceptions;
+using Catalog.Api.Application.Extensions;
+using Catalog.Api.Endpoints;
 
 namespace Catalog.Api.Middleware;
 
@@ -20,16 +22,24 @@ public class EntityNotFoundMiddleware
         {
             await _next(context);
         }
-        catch (EntityNotFoundException)
+        catch (EntityNotFoundException exception)
         {
-            SetResponseToNotFound(context);
+            SetResponseToNotFound(context, exception);
         }
     }
 
-    private static void SetResponseToNotFound(HttpContext context)
+    private static void SetResponseToNotFound(HttpContext context, EntityNotFoundException entityNotFoundException)
     {
-        context.Response.Clear();
-        context.Response.ContentLength = 0;
-        context.Response.StatusCode    = StatusCodes.Status404NotFound;
+        context.Response.StatusCode = StatusCodes.Status404NotFound;
+        context.Response.WriteAsJsonAsync(new ErrorResponse()
+        {
+            Status = StatusCodes.Status404NotFound,
+            Errors = new []
+            {
+                new Error("",
+                    $"Entity {entityNotFoundException.EntityType.GetGenericTypeName()} with id {entityNotFoundException.EntityId} not found",
+                    entityNotFoundException.EntityId)
+            }
+        });
     }
 }
