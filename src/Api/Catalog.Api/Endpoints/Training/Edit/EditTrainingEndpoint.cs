@@ -21,9 +21,9 @@ public class EditTrainingEndpoint : EndpointBaseAsync.WithRequest<EditTrainingCo
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     [SwaggerOperation(
-        Summary = "Updates a training",
-        Description = "Updates a training",
-        OperationId = "Training.Update",
+        Summary = "Edits a training",
+        Description = "Edits a training",
+        OperationId = "EditTraining",
         Tags = new[] { "Training" })]
     public override async Task<ActionResult<EditedTrainingDto>> HandleAsync(EditTrainingCommand request, CancellationToken cancellationToken = default)
     {

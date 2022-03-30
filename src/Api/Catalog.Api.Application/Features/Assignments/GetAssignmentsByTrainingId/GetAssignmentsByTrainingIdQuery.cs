@@ -1,4 +1,4 @@
-﻿using Catalog.Api.Domain.CQS;
+using Catalog.Api.Domain.CQS;
 using Catalog.Api.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,7 +6,7 @@ namespace Catalog.Api.Application.Features.Assignments.GetAssignmentsByTrainingI
 
 public class GetAssignmentsByTrainingIdQuery : IQuery<IEnumerable<AssignmentDto>>
 {
-    public int TrainingId { get; init; }
+    public int Id { get; init; }
 
     public GetAssignmentsByTrainingIdQuery()
     {
@@ -25,7 +25,7 @@ public class GetAssignmentsByTrainingIdQueryHandler : IQueryHandler<GetAssignmen
     public async Task<IEnumerable<AssignmentDto>> Handle(GetAssignmentsByTrainingIdQuery command, CancellationToken cancellationToken)
     {
         return await _catalogContext.TrainingAssignment
-            .Where(assignment  => assignment.TrainingId == command.TrainingId)
+            .Where(assignment  => assignment.TrainingId == command.Id)
             .Select(assignment => new AssignmentDto()
             {
                 TrainerId  = assignment.TrainerId,

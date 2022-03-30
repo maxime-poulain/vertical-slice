@@ -18,7 +18,7 @@ public class DeleteTrainerEndpoint : EndpointBaseAsync.WithRequest<DeleteTrainer
     [HttpDelete($"trainer/{{{nameof(DeleteTrainerCommand.Id)}:int}}")]
     [SwaggerOperation(Summary = "Deletes a trainer by its id",
         Description = "Deletes a trainer by its id",
-        OperationId = "Trainer.Delete",
+        OperationId = "DeleteTrainer",
         Tags = new []{ "Trainer" })]
     [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]

@@ -16,12 +16,12 @@ public class AssignmentCreateEndpoint : EndpointBaseAsync.WithRequest<AssignTrai
         _mediator = mediator;
     }
 
-    [HttpPost("training/assignment")]
+    [HttpPost("assignment/assign")]
     [SwaggerOperation(
         Summary     = "Assigns a trainer to a training",
         Description = "Assigns a trainer to a training",
-        OperationId = "Training.Assignment.Create",
-        Tags        = new []{ "Assignment" })]
+        OperationId = "Assign",
+        Tags        = new[] { "Assignment" })]
     [ProducesResponseType(typeof(AssignmentDto), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]

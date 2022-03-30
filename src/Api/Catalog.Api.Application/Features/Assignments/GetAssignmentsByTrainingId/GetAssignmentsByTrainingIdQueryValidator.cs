@@ -8,7 +8,7 @@ public class GetAssignmentsByTrainingIdQueryValidator : AbstractValidator<GetAss
 {
     public GetAssignmentsByTrainingIdQueryValidator(CatalogContext catalogContext)
     {
-        RuleFor(command => command.TrainingId)
+        RuleFor(command => command.Id)
             .ThrowErrorIfEntityDoesNotExistAsync(catalogContext.Training);
     }
 }

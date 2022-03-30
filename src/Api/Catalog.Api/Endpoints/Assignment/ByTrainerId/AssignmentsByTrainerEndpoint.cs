@@ -19,8 +19,8 @@ public class AssignmentsByTrainerEndpoint : EndpointBaseAsync.WithRequest<GetAss
     [HttpGet("trainer/{Id}/assignment")]
     [SwaggerOperation(Summary = "Retrieves all assignments of a given trainer",
         Description = "Retrieves all assignments of a given trainer",
-        OperationId = "Trainer.Assignment.ById",
-        Tags = new []{ "Assignment" })]
+        OperationId = "AssignmentByTrainerId",
+        Tags = new[] { "Assignment" })]
     [ProducesResponseType(typeof(IEnumerable<AssignmentDto>),StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     public override async Task<ActionResult<IEnumerable<AssignmentDto>>> HandleAsync([FromRoute] GetAssignmentsByTrainerIdQuery request, CancellationToken cancellationToken = default)

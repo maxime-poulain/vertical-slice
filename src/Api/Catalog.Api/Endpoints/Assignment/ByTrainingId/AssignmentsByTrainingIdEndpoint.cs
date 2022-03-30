@@ -16,11 +16,11 @@ public class AssignmentByTrainingIdEndpoint : EndpointBaseAsync.WithRequest<GetA
         _mediator = mediator;
     }
 
-    [HttpGet("training/{TrainingId:int}/assignment")]
+    [HttpGet("training/{Id:int}/assignment")]
     [SwaggerOperation(
-        Summary     = "Gets all assignments of a given training",
-        Description = "Gets all assignments of a given training",
-        OperationId = "Training.Assignment.ByTrainingId",
+        Summary     = "Gets every assignments of a given training",
+        Description = "Gets every assignments of a given training",
+        OperationId = "AssignmentByTrainingId",
         Tags        = new [] { "Assignment" })]
     [ProducesResponseType(typeof(IEnumerable<AssignmentDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]

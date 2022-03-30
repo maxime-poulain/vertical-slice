@@ -22,7 +22,7 @@ public class TrainingCreationEndpoint : Ardalis.ApiEndpoints.EndpointBaseAsync.W
     [SwaggerOperation(
         Summary     = "Creates a new training",
         Description = "Creates a new training",
-        OperationId = "Training.Create",
+        OperationId = "CreateTraining",
         Tags        = new []{ "Training" })
     ]
     public override async Task<ActionResult<CreatedTrainingDto>> HandleAsync(CreateTrainingCommand command, CancellationToken cancellationToken = default)

@@ -20,9 +20,9 @@ public class TrainingDeletionEndpoint : EndpointBaseAsync.WithRequest<DeleteTrai
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     [SwaggerOperation(
-        Summary     = "Deletes a training",
+        Summary     = "Deletes a training by a given id",
         Description = "Deletes a training by a given id",
-        OperationId = "Training.Delete",
+        OperationId = "DeleteTraining",
         Tags        = new []{ "Training" })]
     public override async Task<ActionResult> HandleAsync([FromRoute] DeleteTrainingCommand command, CancellationToken cancellationToken = default)
     {

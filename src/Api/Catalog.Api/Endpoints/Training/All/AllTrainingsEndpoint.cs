@@ -19,9 +19,9 @@ public class TrainingGetAllEndpoint : EndpointBaseAsync.WithoutRequest.WithActio
     [ProducesResponseType(typeof(IEnumerable<TrainingDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     [SwaggerOperation(
-        Summary     = "Gets all trainings",
-        Description = "Gets all trainings",
-        OperationId = "Training.All",
+        Summary     = "Gets every trainings",
+        Description = "Gets every trainings",
+        OperationId = "AllTrainings",
         Tags        = new[] { "Training" })
     ]
     public override async Task<ActionResult<IEnumerable<TrainingDto>>> HandleAsync(CancellationToken cancellationToken = default)

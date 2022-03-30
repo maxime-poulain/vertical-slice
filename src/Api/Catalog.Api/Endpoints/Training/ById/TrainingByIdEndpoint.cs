@@ -19,7 +19,7 @@ public class TrainingByIdEndpoint : EndpointBaseAsync.WithRequest<GetTrainingByI
     [SwaggerOperation(
         Summary     = "Gets a training by its id",
         Description = "Gets a training by its id",
-        OperationId = "Training.ById",
+        OperationId = "TrainingById",
         Tags        = new[] { "Training" })
     ]
     [ProducesResponseType(typeof(TrainingByIdDto), StatusCodes.Status200OK)]

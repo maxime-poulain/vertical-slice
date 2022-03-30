@@ -19,7 +19,7 @@ public class TrainerCreationEndpoint : EndpointBaseAsync.WithRequest<CreateTrain
     [HttpPost("trainer")]
     [SwaggerOperation(Summary = "Creates a trainer",
         Description = "Creates a trainer",
-        OperationId = "Trainer.Create",
+        OperationId = "CreateTrainer",
         Tags = new []{ "Trainer" })]
     [ProducesResponseType(typeof(TrainerCreationResult), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]

@@ -1,4 +1,4 @@
-﻿using Ardalis.ApiEndpoints;
+using Ardalis.ApiEndpoints;
 using Catalog.Api.Application.Features.Assignments;
 using Catalog.Api.Application.Features.Assignments.GetAllAssignments;
 using MediatR;
@@ -16,11 +16,11 @@ public class AssignmentGetAll : EndpointBaseAsync.WithoutRequest.WithActionResul
         _mediator = mediator;
     }
 
-    [HttpGet("training/assignment", Name = "Training.Assignment.All")]
+    [HttpGet("assignment")]
     [SwaggerOperation(
-        Summary = "Gets all the assignments",
-        Description = "Gets all the assignments",
-        OperationId = "Training.Assignment.All",
+        Summary = "Gets every assignments",
+        Description = "Gets every assignments",
+        OperationId = "AllAssignments",
         Tags = new[] { "Assignment" })]
     [ProducesResponseType(typeof(IEnumerable<AssignmentDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
