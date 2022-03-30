@@ -1,5 +1,4 @@
 ﻿using Catalog.Api.Domain.CQS;
-using Catalog.Api.Domain.Enumerations.Training;
 using Catalog.Api.EfCore.Context;
 
 namespace Catalog.Api.Application.Features.Training.GetById;

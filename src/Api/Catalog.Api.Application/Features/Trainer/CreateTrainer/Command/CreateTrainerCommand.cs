@@ -1,6 +1,6 @@
 ﻿using Catalog.Api.Domain.CQS;
-using Catalog.Api.Domain.Enumerations.Trainer;
 using Catalog.Api.EfCore.Context;
+using Catalog.Shared.Enumerations.Trainer;
 
 namespace Catalog.Api.Application.Features.Trainer.CreateTrainer.Command;
 

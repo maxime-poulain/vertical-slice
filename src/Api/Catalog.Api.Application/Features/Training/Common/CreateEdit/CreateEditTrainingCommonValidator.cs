@@ -1,5 +1,5 @@
 ﻿using Catalog.Api.Application.Extensions.FluentValidationExtensions;
-using Catalog.Api.Domain.Enumerations.Training;
+using Catalog.Shared.Enumerations.Training;
 using FluentValidation;
 
 namespace Catalog.Api.Application.Features.Training.Common.CreateEdit;

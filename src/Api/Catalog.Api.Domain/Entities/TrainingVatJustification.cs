@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using Ardalis.GuardClauses;
-using Catalog.Api.Domain.Enumerations.Training;
+﻿using Ardalis.GuardClauses;
+using Catalog.Shared.Enumerations.Training;
 
 namespace Catalog.Api.Domain.Entities;
 
-public class TrainingVatJustification : IEqualityComparer
+public class TrainingVatJustification
 {
-    public int TrainingId { get; }
+    public int TrainingId { get; private set; }
 
-    public Training? Training { get; }
+    public Training? Training { get; private set; }
 
-    public VatJustification VatJustification { get; }
+    public VatJustification VatJustification { get; private set; } = null!;
 
     private TrainingVatJustification()
     {
@@ -25,28 +24,33 @@ public class TrainingVatJustification : IEqualityComparer
         VatJustification = vatJustification;
     }
 
-    public bool Equals(object? x, object? y)
+    protected bool Equals(TrainingVatJustification other)
     {
-        if (ReferenceEquals(x, y))
-        {
-            return true;
-        }
-
-        if (x is null || y is null)
-        {
-            return true;
-        }
-
-        if (x is TrainingVatJustification v1 && y is TrainingVatJustification v2)
-        {
-            return v1.TrainingId == v2.TrainingId && v1.VatJustification == v2.VatJustification;
-        }
-
-        return false;
+        return TrainingId == other.TrainingId && VatJustification.Equals(other.VatJustification);
     }
 
-    public int GetHashCode(object obj)
+    public override bool Equals(object? obj)
     {
-        return obj.GetHashCode();
+        if (ReferenceEquals(null, obj))
+        {
+            return false;
+        }
+
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
+        if (obj.GetType() != this.GetType())
+        {
+            return false;
+        }
+
+        return Equals((TrainingVatJustification) obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(TrainingId, VatJustification);
     }
 }

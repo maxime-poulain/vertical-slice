@@ -1,51 +1,54 @@
 ﻿using Ardalis.GuardClauses;
-using Catalog.Api.Domain.Enumerations.Training;
+using Catalog.Shared.Enumerations.Training;
 
 namespace Catalog.Api.Domain.Entities;
 
-public class TrainingAttendance : IEqualityComparer<TrainingAttendance>
+public class TrainingAttendance
 {
     public int TrainingId { get; init; }
 
-    public virtual Training? Training { get; }
+    public virtual Training? Training { get; private set; }
 
-    public Attendance Attendance { get; }
+    public Attendance Attendance { get; } = null!;
 
     private TrainingAttendance()
     {
 
     }
 
-    public TrainingAttendance(Training training, Attendance? attendance) : this()
+    public TrainingAttendance(Training? training, Attendance attendance)
     {
-        Guard.Against.Null(attendance, nameof(attendance));
-        Guard.Against.Null(training, nameof(training));
-        Training   = training;
-        Attendance = attendance;
+        Training   = Guard.Against.Null(training, nameof(training));
+        Attendance = Guard.Against.Null(attendance, nameof(attendance));
     }
 
-    public bool Equals(TrainingAttendance x, TrainingAttendance y)
+    protected bool Equals(TrainingAttendance other)
     {
-        if (ReferenceEquals(x, y))
+        return TrainingId == other.TrainingId && Attendance.Equals(other.Attendance);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj))
+        {
+            return false;
+        }
+
+        if (ReferenceEquals(this, obj))
         {
             return true;
         }
 
-        if (ReferenceEquals(x, null) || ReferenceEquals(y, null))
+        if (obj.GetType() != this.GetType())
         {
             return false;
         }
 
-        if (x.GetType() != y.GetType())
-        {
-            return false;
-        }
-
-        return x.TrainingId == y.TrainingId && x.Attendance.Equals(y.Attendance);
+        return Equals((TrainingAttendance) obj);
     }
 
-    public int GetHashCode(TrainingAttendance obj)
+    public override int GetHashCode()
     {
-        return HashCode.Combine(obj.TrainingId, obj.Attendance);
+        return HashCode.Combine(TrainingId, Attendance);
     }
 }

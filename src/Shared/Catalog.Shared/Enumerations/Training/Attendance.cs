@@ -1,6 +1,6 @@
 ﻿using Ardalis.SmartEnum;
 
-namespace Catalog.Api.Domain.Enumerations.Training;
+namespace Catalog.Shared.Enumerations.Training;
 
 public class Attendance : SmartEnum<Attendance>
 {

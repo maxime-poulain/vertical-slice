@@ -1,4 +1,5 @@
-﻿using Catalog.Api.Domain.Enumerations.Training;
+using Ardalis.GuardClauses;
+using Catalog.Shared.Enumerations.Training;
 
 namespace Catalog.Api.Domain.Entities;
 
@@ -6,9 +7,9 @@ public class TrainingAudience
 {
     public int TrainingId { get; }
 
-    public Training Training { get; init; }
+    public Training? Training { get; private set; }
 
-    public Audience Audience { get; init; } = null!;
+    public Audience Audience { get; private set; } = null!;
 
     private TrainingAudience()
     {
@@ -17,6 +18,8 @@ public class TrainingAudience
 
     public TrainingAudience(Training training, Audience audience) : this()
     {
+        Guard.Against.Null(training, nameof(training));
+        Guard.Against.Null(audience, nameof(audience));
         Training   = training;
         TrainingId = training.Id;
         Audience   = audience;

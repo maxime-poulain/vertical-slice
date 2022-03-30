@@ -1,6 +1,6 @@
 ﻿using Ardalis.SmartEnum;
 
-namespace Catalog.Api.Domain.Enumerations.Trainer;
+namespace Catalog.Shared.Enumerations.Trainer;
 
 public class TrainerSkillLevel : SmartEnum<TrainerSkillLevel>
 {

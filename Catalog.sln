@@ -22,6 +22,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{FA9DB2E3-6149-41DC-98CA-30CDB0E9C744}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Shared", "src\Shared\Catalog.Shared\Catalog.Shared.csproj", "{777E7D51-A73A-4F4D-94B3-AC656CFA8AA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +56,10 @@ Global
 		{E3069069-23BF-420B-ADD6-2E767323CE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3069069-23BF-420B-ADD6-2E767323CE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3069069-23BF-420B-ADD6-2E767323CE04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{777E7D51-A73A-4F4D-94B3-AC656CFA8AA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{777E7D51-A73A-4F4D-94B3-AC656CFA8AA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{777E7D51-A73A-4F4D-94B3-AC656CFA8AA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{777E7D51-A73A-4F4D-94B3-AC656CFA8AA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +71,7 @@ Global
 		{ED97130D-4B9B-4465-B6EB-EDA1D7FC065C} = {CD7A984C-7920-4C74-877A-1991F8A1A016}
 		{0B36C7B5-B737-4BBE-A0D7-9A8347953EE5} = {CD7A984C-7920-4C74-877A-1991F8A1A016}
 		{E3069069-23BF-420B-ADD6-2E767323CE04} = {CD7A984C-7920-4C74-877A-1991F8A1A016}
+		{777E7D51-A73A-4F4D-94B3-AC656CFA8AA9} = {FA9DB2E3-6149-41DC-98CA-30CDB0E9C744}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94C6085D-BC99-4910-A9B0-EA1BFF569537}

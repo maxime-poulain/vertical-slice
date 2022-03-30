@@ -1,7 +1,7 @@
 using Ardalis.GuardClauses;
 using Catalog.Api.Domain.Entities.Base;
-using Catalog.Api.Domain.Enumerations.Training;
 using Catalog.Api.Domain.Extensions;
+using Catalog.Shared.Enumerations.Training;
 
 namespace Catalog.Api.Domain.Entities;
 

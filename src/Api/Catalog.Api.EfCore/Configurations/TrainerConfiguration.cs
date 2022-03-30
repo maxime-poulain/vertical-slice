@@ -1,5 +1,5 @@
 ﻿using Catalog.Api.Domain.Entities;
-using Catalog.Api.Domain.Enumerations.Trainer;
+using Catalog.Shared.Enumerations.Trainer;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Catalog.Api.EfCore.Configurations;

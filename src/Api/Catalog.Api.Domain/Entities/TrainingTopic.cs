@@ -1,4 +1,4 @@
-﻿using Catalog.Api.Domain.Enumerations.Training;
+﻿using Catalog.Shared.Enumerations.Training;
 
 namespace Catalog.Api.Domain.Entities;
 

@@ -1,6 +1,5 @@
 ﻿using Catalog.Api.Application.Features.Training.Common.CreateEdit;
 using Catalog.Api.Domain.Entities.Base;
-using Catalog.Api.Domain.Enumerations.Training;
 using Catalog.Api.EfCore.Context;
 
 namespace Catalog.Api.Application.Features.Training.Create.Command;
