@@ -1,0 +1,25 @@
+﻿@page "/"
+@using Catalog.Shared.HttpClients.Catalog
+@inject ITrainingClient client
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+
+
+@foreach (var training in Trainings)
+{
+    <h1>@training.Title</h1>
+}
+@code
+{
+    public List<TrainingDto> Trainings { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Trainings = await client.AllTrainingsAsync();
+    }
+}

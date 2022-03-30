@@ -28,6 +28,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Shared", "src\Share
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Shared.HttpClients", "src\Shared\Catalog.Shared.HttpClients\Catalog.Shared.HttpClients.csproj", "{07EC12F9-4FB0-4227-8A50-60DE5903B6D6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{2B7569BD-FAC8-453B-9C05-4B15D42E7D5D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Web.WebAssembly", "src\Web\Catalog.Web.WebAssembly\Catalog.Web.WebAssembly.csproj", "{FA88BDFE-B224-4E10-82EE-9A3145D2A6C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +70,10 @@ Global
 		{07EC12F9-4FB0-4227-8A50-60DE5903B6D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07EC12F9-4FB0-4227-8A50-60DE5903B6D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07EC12F9-4FB0-4227-8A50-60DE5903B6D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA88BDFE-B224-4E10-82EE-9A3145D2A6C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA88BDFE-B224-4E10-82EE-9A3145D2A6C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA88BDFE-B224-4E10-82EE-9A3145D2A6C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA88BDFE-B224-4E10-82EE-9A3145D2A6C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +87,7 @@ Global
 		{E3069069-23BF-420B-ADD6-2E767323CE04} = {CD7A984C-7920-4C74-877A-1991F8A1A016}
 		{777E7D51-A73A-4F4D-94B3-AC656CFA8AA9} = {FA9DB2E3-6149-41DC-98CA-30CDB0E9C744}
 		{07EC12F9-4FB0-4227-8A50-60DE5903B6D6} = {FA9DB2E3-6149-41DC-98CA-30CDB0E9C744}
+		{FA88BDFE-B224-4E10-82EE-9A3145D2A6C4} = {2B7569BD-FAC8-453B-9C05-4B15D42E7D5D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94C6085D-BC99-4910-A9B0-EA1BFF569537}

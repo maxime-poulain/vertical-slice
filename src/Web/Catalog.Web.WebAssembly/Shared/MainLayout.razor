@@ -1,0 +1,50 @@
+﻿@inherits LayoutComponentBase
+
+<header class="u-position-relative">
+    <div class="c-navbar c-navbar--scrollable c-navbar--bordered-bottom">
+        <div class="c-toolbar">
+            <div class="c-toolbar__left">
+                <div class="c-toolbar__item">
+                    <div class="c-brand c-brand--xsmall">
+                        <a href="/">
+                            <img src="https://design.smart.coop/images/logo.svg" alt="Smart">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="c-toolbar__right">
+                <div class="c-toolbar__item">
+                    <a class="c-user-navigation" data-menu="userMenu">
+                        <div class="c-avatar c-avatar--img">
+                            <img src="https://i1.sndcdn.com/avatars-000304411295-zx2krs-t500x500.jpg" alt="avatar">
+                        </div>
+                    </a>
+                    <ul class="c-menu c-menu--large" id="userMenu">
+                        <li class="c-menu__item">
+                            <a class="c-menu__label" href="/admin">My personal space</a>
+                        </li>
+                        <li class="c-menu__divider" role="presentational"></li>
+                        <li class="c-menu__item">
+                            <a class="c-menu__label" href="#">Sign out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="u-maximize-width u-scroll-wrapper">
+    <div class="c-app-layout-inner">
+        <div class="c-app-layout-inner__sidebar">
+            <SideMenu>
+                <SideMenuItem Label="My trainer profile" HRef="/admin/mytrainerprofile"></SideMenuItem>
+                <SideMenuItem Label="My trainings" HRef="/admin/mytrainings"></SideMenuItem>
+            </SideMenu>
+        </div>
+        <div class="c-app-layout-inner__content">
+            <div class="u-scroll-wrapper">
+            @Body
+            </div>
+        </div>
+    </div>
+</main>
