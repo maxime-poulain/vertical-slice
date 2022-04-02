@@ -33,10 +33,10 @@ public class EditTrainingCommandHandler : CreateEditTrainingCommonCommandHandler
     {
         return new EditedTrainingDto()
         {
+            Id                      = training.Id,
             Title                   = training.Title,
             Description             = training.Description,
-            Goal                    = training.Goal,
-            TrainingId              = training.Id
+            Goal                    = training.Goal
         };
     }
 

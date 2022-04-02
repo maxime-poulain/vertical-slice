@@ -34,7 +34,7 @@ public class CreateTrainingCommandHandler : CreateEditTrainingCommonCommandHandl
     {
         return new CreatedTrainingDto()
         {
-            TrainingId = training.Id
+            Id = training.Id
         };
     }
 }

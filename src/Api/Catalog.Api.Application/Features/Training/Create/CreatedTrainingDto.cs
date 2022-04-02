@@ -1,6 +1,5 @@
-﻿namespace Catalog.Api.Application.Features.Training.Create;
+namespace Catalog.Api.Application.Features.Training.Create;
 
-public class CreatedTrainingDto
+public record CreatedTrainingDto : TrainingDto
 {
-    public int TrainingId { get; set; }
 }

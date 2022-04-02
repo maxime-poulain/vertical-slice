@@ -1,12 +1,7 @@
-﻿namespace Catalog.Api.Application.Features.Training.Edit;
+using Catalog.Api.Application.Features.Training.Create;
 
-public record EditedTrainingDto
+namespace Catalog.Api.Application.Features.Training.Edit;
+
+public record EditedTrainingDto : CreatedTrainingDto
 {
-    public int TrainingId { get; init; }
-
-    public string Title { get; init; } = null!;
-
-    public string Description { get; init; } = null!;
-
-    public string Goal { get; init; } = null!;
 }
