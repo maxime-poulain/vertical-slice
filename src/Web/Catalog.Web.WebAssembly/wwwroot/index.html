@@ -13,6 +13,18 @@
     <div id="app" class="c-app-layout">Loading...</div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="https://design.smart.coop/js/bundle-client.js"></script>
+    <script>
+        // When the user clicks the button, the page scrolls to the top
+        function scrollToTop(id) {
+            var elem = document.getElementById(id);
+            if (elem == null) {
+                elem = document.getElementsByClassName("u-scroll-wrapper-body");
+            };
+            if (elem == null)
+                return;
+            elem[0].scrollTop = 0;
+        }
+    </script>
 </body>
 
 </html>

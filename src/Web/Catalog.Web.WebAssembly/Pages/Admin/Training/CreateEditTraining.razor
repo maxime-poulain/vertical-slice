@@ -1,0 +1,108 @@
+﻿@page "/admin/training/{Id:int?}"
+@using Catalog.Shared.Enumerations.Training
+
+<SmartNavbar Border="Bordered.Bottom">
+    <SmartToolbar>
+        <Left>
+            @if (Id != default)
+            {
+                <div class="c-toolbar__item">
+                    <a class="c-button c-button--icon c-button--borderless" href="/admin/mytrainings">
+                        <div class="c-button__content">
+                            <SmartIcon Icon="Icon.ArrowLeft"></SmartIcon>
+                        </div>
+                    </a>
+                </div>
+            }
+            <SmartToolbarItem>
+                <SmartToolbarTitle Title="@Title"></SmartToolbarTitle>
+            </SmartToolbarItem>
+        </Left>
+    </SmartToolbar>
+</SmartNavbar>
+
+<div class="u-scroll-wrapper-body">
+    <div class="u-spacer-xl">
+        @if (ErrorMessages?.Any() == true)
+        {
+            <div class="u-spacer-bottom-l">
+                <Alert Messages="ErrorMessages"></Alert>
+            </div>
+        }
+        <EditForm Model="Request" OnSubmit="SubmitAsync">
+            <div class="o-form-group-layout--standard ">
+                <SmartPanel>
+                    <Header>
+                        <SmartPanelTitle>Information that will be displayed on the public website</SmartPanelTitle>
+                    </Header>
+                    <Body>
+                    <SmartFormGroup Label="Title *">
+                        <SmartInputText @bind-Value="Request.Title"></SmartInputText>
+                    </SmartFormGroup>
+
+                    <SmartFormGroup Label="Description *">
+                        <SmartTextArea @bind-Value="Request.Description"></SmartTextArea>
+                    </SmartFormGroup>
+
+                    <SmartFormGroup Label="Goal *">
+                        <SmartTextArea @bind-Value="Request.Goal"></SmartTextArea>
+                    </SmartFormGroup>
+
+                    <SmartFormGroup Label="Topics *" HelperText="Multiple choices allowed">
+                        <SmartGrid>
+                                @foreach (var topic in Topic.List)
+                                {
+                                    <SmartColumn Width="4">
+                                        <SmartCheckbox Label="@topic.Name" OnChange="args => OnTopicSelected(topic, args)" IsChecked="@(Request.Topics.Contains(topic))"></SmartCheckbox>
+                                    </SmartColumn>
+                                }
+                        </SmartGrid>
+                    </SmartFormGroup>
+                    </Body>
+                </SmartPanel>
+
+                <div class="u-spacer-xl"></div>
+
+                <SmartPanel>
+                    <Header>
+                        <SmartPanelTitle>VAT justification</SmartPanelTitle>
+                    </Header>
+                    <Body>
+                    <SmartFormGroup Label="The training *" HelperText="Multiple choices allowed">
+                        <SmartGrid>
+                                @foreach (var vatJustification in VatJustification.List)
+                                {
+                                    <SmartColumn>
+                                        <SmartCheckbox Label="@vatJustification.Name" OnChange="args => OnVatJustificationSelected(vatJustification, args)" IsChecked="@(Request.VatJustifications.Contains(vatJustification))"></SmartCheckbox>
+                                    </SmartColumn>
+                                }
+                        </SmartGrid>
+                    </SmartFormGroup>
+
+                    <SmartFormGroup Label="Audience *" HelperText="Multiple choices allowed">
+                            @foreach (var audience in Audience.List)
+                            {
+                                <SmartColumn>
+                                    <SmartCheckbox Label="@audience.Name" OnChange="args => OnAudienceSelected(audience, args)" IsChecked="@(Request.Audiences.Contains(audience))"></SmartCheckbox>
+                                </SmartColumn>
+                            }
+                    </SmartFormGroup>
+
+                    <SmartFormGroup Label="Attendance *" HelperText="Multiple choices allowed">
+                            @foreach (var attendance in Attendance.List)
+                            {
+                                <SmartColumn>
+                                    <SmartCheckbox Label="@attendance.Name" OnChange="args => OnAttendanceSelected(attendance, args)" IsChecked="@(Request.Attendances.Contains(attendance))"></SmartCheckbox>
+                                </SmartColumn>
+                            }
+                    </SmartFormGroup>
+                    </Body>
+                </SmartPanel>
+
+                <div class="u-spacer-top-xl">
+                    <SmartButton Type="ButtonType.Submit" Label="Submit" ButtonStyle="ButtonStyle.Primary" Block="true"></SmartButton>
+                </div>
+            </div>
+        </EditForm>
+    </div>
+</div>
