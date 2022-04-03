@@ -7,7 +7,7 @@ namespace Catalog.Api.Domain.Entities;
 
 public class Trainer : Entity, IEntity
 {
-    private string _firstname;
+    private string _firstname = null!;
 
     public string Firstname
     {
@@ -15,7 +15,7 @@ public class Trainer : Entity, IEntity
         init => ChangeFirstname(value);
     }
 
-    private string _lastname;
+    private string _lastname = null!;
 
     public string Lastname
     {
@@ -23,7 +23,7 @@ public class Trainer : Entity, IEntity
         init => ChangeLastname(value);
     }
 
-    private string _bio;
+    private string _bio = null!;
 
     public string Bio
     {
@@ -37,7 +37,7 @@ public class Trainer : Entity, IEntity
         _bio = Guard.Against.MinLength(bio, 30, nameof(bio));
     }
 
-    private TrainerSkillLevel _skillLevel;
+    private TrainerSkillLevel _skillLevel = null!;
 
     public TrainerSkillLevel SkillLevel
     {

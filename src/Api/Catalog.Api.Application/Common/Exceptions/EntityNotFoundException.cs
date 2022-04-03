@@ -9,7 +9,7 @@ public class EntityNotFoundException : Exception
 {
     public int EntityId { get; }
 
-    public Type EntityType { get; }
+    public Type EntityType { get; } = null!;
 
     public EntityNotFoundException(int entityId, Type entityType) : base(ErrorMessage(entityId, entityType))
     {

@@ -1,4 +1,4 @@
-﻿using Catalog.Api.Domain.Entities;
+using Catalog.Api.Domain.Entities;
 using Catalog.Api.Domain.Entities.Base;
 using Catalog.Api.EfCore.Configurations;
 using Catalog.Api.EfCore.Extensions;
@@ -9,7 +9,7 @@ namespace Catalog.Api.EfCore.Context;
 
 public class CatalogContext : DbContext
 {
-    private readonly IMediator _mediator;
+    private readonly IMediator _mediator = null!;
 
     public DbSet<Trainer> Trainer { get; set; } = null!;
 
@@ -17,7 +17,7 @@ public class CatalogContext : DbContext
 
     public DbSet<TrainingAssignment> TrainingAssignment { get; set; } = null!;
 
-    public CatalogContext() : base()
+    private CatalogContext() : base()
     {
     }
 

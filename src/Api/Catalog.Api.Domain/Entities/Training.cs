@@ -7,7 +7,7 @@ namespace Catalog.Api.Domain.Entities;
 
 public class Training : Entity, IEntity
 {
-    private string _title;
+    private string _title = null!;
 
     public string Title
     {
@@ -15,7 +15,7 @@ public class Training : Entity, IEntity
         init => ChangeTitle(value);
     }
 
-    private string _description;
+    private string _description = null!;
 
     public string Description
     {
@@ -23,7 +23,7 @@ public class Training : Entity, IEntity
         init => ChangeDescription(value);
     }
 
-    private string _goal;
+    private string _goal = null!;
 
     public string Goal
     {
