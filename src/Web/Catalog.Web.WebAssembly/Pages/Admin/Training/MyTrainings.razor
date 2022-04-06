@@ -1,0 +1,75 @@
+﻿@page "/admin/mytrainings"
+@if (Trainings?.Count == 0)
+{
+    <div class="c-error-page">
+        <h4 class="c-error-page__title" style="font-size: 3.0rem;">You don't have any trainings yet</h4>
+        <p class="c-error-page__desc" style="font-size: 2.4rem;">Click on the button bellow to add your first training</p>
+        <a class="c-button c-button--secondary" href="/admin/training">
+            <span class="c-button__content">
+                <SmartIcon Icon="Icon.Add"></SmartIcon>
+                <span class="c-button__label">New Training</span>
+            </span>
+        </a>
+    </div>
+}
+else if (Trainings is not null)
+{
+    <SmartNavbar>
+        <SmartToolbar>
+            <Right>
+                <SmartButtonToolbar>
+                    <SmartToolbarItem>
+                        <a class="c-button c-button--primary" href="/admin/training">
+                            <span class="c-button__content">
+                                <span class="c-button__label">New Training</span>
+                            </span>
+                        </a>
+                    </SmartToolbarItem>
+                </SmartButtonToolbar>
+            </Right>
+        </SmartToolbar>
+    </SmartNavbar>
+
+    <div class="u-scroll-wrapper-body">
+
+
+            <div class="o-card-grid small-up-1 u-spacer-l">
+                @foreach (var training in Trainings)
+                {
+                    <div class="c-card">
+                        <div class="c-card__body">
+                            <div class="o-grid">
+                                <div class="o-grid-col-bp3-8">
+                                    <h4 class="c-card__title">@training.Title</h4>
+                                    <div class="u-spacer-top-s">
+                                        <span class="c-body-2 u-text-muted">@(string.Join(", ", training.Topics.Select(t => t.Name)))</span>
+                                    </div>
+                                </div>
+                                <div class="c-card__actions">
+                                    <div class="o-flex o-flex--vertical-center o-flex--justify-between o-flex--spaced-wide">
+                                        <span class="c-status-pill c-status-pill--pending">
+                                            <span class="c-status-pill__circle"></span>
+                                            <span class="c-status-pill__label">Pending</span>
+                                        </span>
+                                        <div class="c-button-toolbar">
+                                            <a class="c-button c-button--borderless c-button--icon" href="/admin/training/@training.Id">
+                                                <span class="c-button__content">
+                                                    <SmartIcon Icon="Icon.Edit"></SmartIcon>
+                                                </span>
+                                            </a>
+
+                                            <button class="c-button c-button--borderless c-button--icon" type="button" @onclick="() => DeleteTrainingAsync(training)">
+                                                <span class="c-button__content">
+                                                    <SmartIcon Icon="Icon.Delete"></SmartIcon>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+    </div>
+}
