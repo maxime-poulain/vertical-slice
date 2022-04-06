@@ -1,4 +1,6 @@
-﻿namespace Catalog.Api.Application.Features.Training.GetAll;
+using Catalog.Shared.Enumerations.Training;
+
+namespace Catalog.Api.Application.Features.Training.GetAll;
 
 public class TrainingDto
 {
@@ -7,4 +9,6 @@ public class TrainingDto
     public string? Description { get; set; }
 
     public string? Title { get; set; }
+
+    public IEnumerable<Topic>? Topics { get; set; }
 }

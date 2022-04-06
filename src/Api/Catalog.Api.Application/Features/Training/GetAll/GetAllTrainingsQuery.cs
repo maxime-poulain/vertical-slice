@@ -19,11 +19,13 @@ public class GetAllTrainingsQueryHandler : IQueryHandler<GetAllTrainingsQuery, I
     public async Task<IEnumerable<TrainingDto>> Handle(GetAllTrainingsQuery request, CancellationToken cancellationToken)
     {
         return await _catalogContext.Training
+            .Include(training => training.Topics)
             .Select(training => new TrainingDto()
             {
                 Id           = training.Id,
                 Title        = training.Title,
                 Description  = training.Description,
+                Topics       = training.Topics.Select(topic => topic.Topic)
             }).ToListAsync(cancellationToken);
     }
 }
