@@ -5,6 +5,7 @@ using Catalog.Shared.HttpClients.Catalog;
 using Catalog.Web.WebAssembly.Extensions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using Sotsera.Blazor.Toaster;
 
 namespace Catalog.Web.WebAssembly.Pages.Admin.Training;
 
@@ -23,6 +24,9 @@ public partial class CreateEditTraining : ComponentBase
 
     [Inject]
     public NavigationManager NavigationManager { get; private set; } = default!;
+
+    [Inject]
+    public IToaster Toaster { get; set; } = default!;
 
     protected string? Title { get; set; }
 
@@ -56,7 +60,7 @@ public partial class CreateEditTraining : ComponentBase
             catch (Exception)
             {
                 Id = -1;
-                ErrorMessages = new[] { "An unexpected exception occurred, please try later" };
+                Toaster.Error("Training sheet could not be retrieved. Please try again later.");
             }
         }
 
@@ -89,12 +93,19 @@ public partial class CreateEditTraining : ComponentBase
                 await TrainingClient.EditTrainingAsync(Request);
             }
 
+            ShowToast();
             NavigationManager.NavigateTo("/Admin/mytrainings");
         }
         catch (Exception exception)
         {
             await HandleExceptionsOnSubmitAsync(exception);
         }
+    }
+
+    private void ShowToast()
+    {
+        var message = Id == default ? $"Training created with success" : $"Training updated with success";
+        Toaster.Success(message);
     }
 
     private async Task HandleExceptionOnFetchingTrainerAsync(ApiException exception)
@@ -110,7 +121,7 @@ public partial class CreateEditTraining : ComponentBase
         else
         {
             Id = -1;
-            ErrorMessages = new[] { "An unexpected exception occurred, please try later" };
+            Toaster.Error("An unexpected exception occurred, please try later");
         }
 
         await ScrollToTopAsync();
@@ -124,7 +135,7 @@ public partial class CreateEditTraining : ComponentBase
         }
         else
         {
-            ErrorMessages = new List<string>() { "An expected error occurred while processing the request. Try again later." };
+            Toaster.Error("An unexpected exception occurred, please try later");
             Console.WriteLine(exception.StackTrace + "\n" + exception.Message);
         }
 
