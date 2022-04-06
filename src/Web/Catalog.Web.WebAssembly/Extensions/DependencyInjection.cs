@@ -1,4 +1,5 @@
 using Catalog.Shared.HttpClients.Catalog;
+using Smart.Design.Blazor.Extensions;
 using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Catalog.Web.WebAssembly.Extensions;
@@ -13,7 +14,8 @@ public static class DependencyInjection
         return services
             .AddToaster()
             .AddHttpClients(configuration, hostEnvironmentBaseAddress)
-            .AddCatalogHttpClients();
+            .AddCatalogHttpClients()
+            .AddSmartDesign();
     }
 
     private static IServiceCollection AddToaster(this IServiceCollection services)
