@@ -6,6 +6,7 @@ using Catalog.Web.WebAssembly.Extensions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Sotsera.Blazor.Toaster;
+using Topic = Catalog.Shared.Enumerations.Training.Topic;
 
 namespace Catalog.Web.WebAssembly.Pages.Admin.Training;
 
