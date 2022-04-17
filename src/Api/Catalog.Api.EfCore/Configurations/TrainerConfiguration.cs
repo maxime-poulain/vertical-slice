@@ -1,4 +1,4 @@
-﻿using Catalog.Api.Domain.Entities;
+using Catalog.Api.Domain.Entities;
 using Catalog.Shared.Enumerations.Trainer;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -21,10 +21,5 @@ public class TrainerConfiguration : EntityConfiguration<Trainer>
         entityTypeBuilder.Property(trainer => trainer.Bio)
             .HasMaxLength(500)
             .IsRequired();
-
-        entityTypeBuilder.Property(trainer => trainer.SkillLevel)
-            .HasConversion(
-                trainerSkillLevel => trainerSkillLevel.Value,
-                id => TrainerSkillLevel.FromValue(id));
     }
 }

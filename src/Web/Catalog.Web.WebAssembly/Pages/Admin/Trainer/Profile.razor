@@ -1,0 +1,62 @@
+﻿@page "/admin/mytrainerprofile"
+
+@using Catalog.Shared.Enumerations.Trainer
+
+@if (EditProfileRequest is not null)
+{
+    <SmartNavbar Border="Bordered.Bottom">
+        <SmartToolbar>
+            <Left >
+                <SmartToolbarItem>
+                    <SmartToolbarTitle Title="@Name"></SmartToolbarTitle>
+                </SmartToolbarItem>
+            </Left>
+        </SmartToolbar>
+    </SmartNavbar>
+
+    <div class=" u-scroll-wrapper-body">
+        <EditForm class="u-spacer-xl" Model="EditProfileRequest" OnSubmit="SubmitAsync">
+            <div class="o-form-group-layout o-form-group-layout--standard">
+                <SmartPanel>
+                    <Header>
+                        <SmartPanelTitle>My profile</SmartPanelTitle>
+                    </Header>
+                    <Body>
+
+                    <SmartFormGroup Label="Email">
+                        <SmartInputText @bind-Value="EditProfileRequest.Email"></SmartInputText>
+                    </SmartFormGroup>
+
+                    <SmartFormGroup Label="Profession">
+                        <SmartInputText @bind-Value="EditProfileRequest.Profession"></SmartInputText>
+                    </SmartFormGroup>
+
+                    <SmartFormGroup Label="Bio" HelperText="max 500 characters">
+                        <SmartTextArea @bind-Value="EditProfileRequest.Bio"></SmartTextArea>
+                    </SmartFormGroup>
+                    </Body>
+                </SmartPanel>
+
+                <div class="u-spacer-l"></div>
+
+                <SmartPanel>
+                    <Header>
+                        <SmartPanelTitle>Social Networks</SmartPanelTitle>
+                    </Header>
+                    <Body>
+                    @foreach (var socialNetwork in EditProfileRequest.SocialNetworks)
+                    {
+                        <SmartFormGroup Label="@SocialNetwork.FromValue(socialNetwork.SocialNetworkId).Name">
+                            <SmartInputText @bind-Value="socialNetwork.Url" ></SmartInputText>
+                        </SmartFormGroup>
+                    }
+                    </Body>
+                </SmartPanel>
+
+                <div class="u-spacer-l"></div>
+
+                <SmartButton LeadingIcon="Icon.Save" Type="ButtonType.Submit" Label="Save" Block="true"></SmartButton>
+            </div>
+        </EditForm>
+    </div>
+}

@@ -1,4 +1,4 @@
-﻿using Catalog.Api.Application.Extensions.FluentValidationExtensions;
+using Catalog.Api.Application.Extensions.FluentValidationExtensions;
 using Catalog.Shared.Enumerations.Trainer;
 using FluentValidation;
 
@@ -22,8 +22,9 @@ public class CreateTrainerCommandValidator : AbstractValidator<CreateTrainerComm
             .MaximumLength(500)
             .WithMessage("Bio must not exceed 500 characters");
 
-        RuleFor(command => command.TrainerSkillLevelId)
-            .EnumerationExists<CreateTrainerCommand, TrainerSkillLevel>()
-            .WithMessage((_, level) => $"Trainer level skill id `{level}` doesn't exist");
+        RuleFor(command => command.SocialNetworks!.Select(socialNetworkAccountDto => socialNetworkAccountDto.SocialNetworkId))
+            .AllEnumerationExists<CreateTrainerCommand, SocialNetwork>()
+            .WithName(command => nameof(command.SocialNetworks))
+            .When(command => command.SocialNetworks is not null);
     }
 }

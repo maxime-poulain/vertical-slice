@@ -1,5 +1,8 @@
-﻿using Catalog.Api.Domain.CQS;
+using Catalog.Api.Application.Features.Trainer.Common.Dtos;
+using Catalog.Api.Domain.CQS;
+using Catalog.Api.Domain.Entities.TrainerAggregate.Messages;
 using Catalog.Api.EfCore.Context;
+using Catalog.Api.EfCore.Extensions;
 using Catalog.Shared.Enumerations.Trainer;
 
 namespace Catalog.Api.Application.Features.Trainer.CreateTrainer.Command;
@@ -10,9 +13,13 @@ public class CreateTrainerCommand : ICommand<TrainerCreationResult>
 
     public string? Lastname { get; set; }
 
+    public string? Email { get; set; }
+
     public string? Bio { get; set; }
 
-    public int TrainerSkillLevelId { get; set; }
+    public string? Profession { get; set; }
+
+    public List<SocialNetworkAccountDto>? SocialNetworks { get; set; }
 }
 
 public class CreateTrainerCommandHandler : ICommandHandler<CreateTrainerCommand, TrainerCreationResult>
@@ -30,7 +37,7 @@ public class CreateTrainerCommandHandler : ICommandHandler<CreateTrainerCommand,
 
         trainer.DomainEvents.Add(new TrainerCreatedEvent(trainer));
 
-        await InsertTrainerAsync(cancellationToken, trainer);
+        await _catalogContext.InsertAsync(trainer, cancellationToken);
 
         return new TrainerCreationResult()
         {
@@ -40,17 +47,8 @@ public class CreateTrainerCommandHandler : ICommandHandler<CreateTrainerCommand,
 
     private Domain.Entities.Trainer MakeTrainer(CreateTrainerCommand command)
     {
-        var trainer = new Domain.Entities.Trainer(command.Firstname!,
-            command.Lastname!,
-            command.Bio!,
-            TrainerSkillLevel.FromValue(command.TrainerSkillLevelId));
-
-        return trainer;
-    }
-
-    private async Task InsertTrainerAsync(CancellationToken cancellationToken, Domain.Entities.Trainer trainer)
-    {
-        _catalogContext.Trainer.Add(trainer);
-        await _catalogContext.SaveChangesAsync(cancellationToken);
+        var socialNetworks = command.SocialNetworks?.Select(s => (SocialNetwork.FromValue(s.SocialNetworkId), s.Url));
+        var message = new CreateTrainerMessage(command.Firstname!, command.Lastname!, command.Profession, command.Bio, command.Email, socialNetworks);
+        return Domain.Entities.Trainer.Create(message);
     }
 }

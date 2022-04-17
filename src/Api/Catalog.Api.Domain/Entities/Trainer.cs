@@ -1,5 +1,6 @@
-﻿using Ardalis.GuardClauses;
+using Ardalis.GuardClauses;
 using Catalog.Api.Domain.Entities.Base;
+using Catalog.Api.Domain.Entities.TrainerAggregate.Messages;
 using Catalog.Api.Domain.Extensions;
 using Catalog.Shared.Enumerations.Trainer;
 
@@ -31,32 +32,48 @@ public class Trainer : Entity, IEntity
         init => ChangeBio(value);
     }
 
-    private void ChangeBio(string bio)
+    private string? _profession;
+
+    public string? Profession
     {
-        Guard.Against.MaxLength(bio, 500, nameof(bio));
-        _bio = Guard.Against.MinLength(bio, 30, nameof(bio));
+        get => _profession;
+        private set => ChangeProfession(value);
     }
 
-    private TrainerSkillLevel _skillLevel = null!;
+    private string? _email;
 
-    public TrainerSkillLevel SkillLevel
+    public string? Email
     {
-        get => _skillLevel;
-        init => ChangeSkillLevel(value);
+        get => _email;
+        private set => ChangeEmail(value);
     }
 
     private readonly List<TrainingAssignment> _trainingAssignments;
 
     public IReadOnlyList<TrainingAssignment> TrainingAssignments => _trainingAssignments.AsReadOnly();
 
-    public Trainer(string firstname, string lastname, string bio, TrainerSkillLevel skillLevel)
-    {
-        Firstname  = firstname;
-        Lastname   = lastname;
-        SkillLevel = skillLevel;
-        Bio        = bio;
+    private readonly List<TrainerSocialNetwork> _socialNetworks = new();
 
+    public IReadOnlyCollection<TrainerSocialNetwork> SocialNetworks => _socialNetworks;
+
+    public void ChangeBio(string? bio)
+    {
+        _bio = Guard.Against.NullOrEmpty(bio, nameof(bio));
+        _bio = Guard.Against.Between(bio, 30, 500, nameof(bio));
+    }
+
+    private Trainer()
+    {
         _trainingAssignments = new List<TrainingAssignment>();
+    }
+
+    public static Trainer Create(CreateTrainerMessage message)
+    {
+        var trainer = new Trainer();
+        trainer.ChangeName(message.FirstName, message.LastName);
+        trainer.EditProfile(message);
+        trainer.DomainEvents.Add(new TrainerCreatedEvent(trainer));
+        return trainer;
     }
 
     public void AssignTraining(TrainingAssignment assignment)
@@ -80,8 +97,40 @@ public class Trainer : Entity, IEntity
         ChangeLastname(lastname);
     }
 
-    public void ChangeSkillLevel(TrainerSkillLevel level)
+    public void ChangeProfession(string? title)
     {
-        _skillLevel = level;
+        _profession = title;
+    }
+
+    public void ChangeEmail(string? email)
+    {
+        _email = email;
+    }
+
+    private void ChangeSocialNetworks(IEnumerable<(SocialNetwork SocialNetwork, string? Url)>? socialNetworks)
+    {
+        _socialNetworks.Clear();
+        var socialNetworksToAdd = socialNetworks?
+            .Where(personalUrlToSocialNetwork => !string.IsNullOrWhiteSpace(personalUrlToSocialNetwork.Url))
+            .DistinctBy(social => social.SocialNetwork)
+            .Select(personalUrlToSocialNetwork =>
+                new TrainerSocialNetwork(this, personalUrlToSocialNetwork.SocialNetwork, personalUrlToSocialNetwork.Url))
+            ?? Array.Empty<TrainerSocialNetwork>();
+
+        _socialNetworks.AddRange(socialNetworksToAdd);
+    }
+
+    public void EditProfile(EditProfileMessage message)
+    {
+        ChangeProfession(message.Profession);
+        ChangeBio(message.Bio);
+        ChangeEmail(message.Email);
+        ChangeSocialNetworks(message.SocialNetworks);
+
+        // We don't want to trigger the edited event when the underlying trainer doesn't exist yet.
+        if (Id != default)
+        {
+            DomainEvents.Add(new TrainerProfileEditedEvent(this));
+        }
     }
 }
