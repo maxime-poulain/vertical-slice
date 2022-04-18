@@ -9,7 +9,7 @@ public static class DependencyInjection
     private const string CatalogHttpClientName = nameof(CatalogHttpClientName);
     private const string CurrentHostClientName = nameof(CurrentHostClientName);
 
-    public static IServiceCollection AddDependencies( this IServiceCollection services, IConfiguration configuration, string hostEnvironmentBaseAddress)
+    public static IServiceCollection AddDependencies(this IServiceCollection services, IConfiguration configuration, string hostEnvironmentBaseAddress)
     {
         return services
             .AddToaster()

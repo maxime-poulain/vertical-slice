@@ -4,6 +4,7 @@ using Catalog.Api.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.Api.Application.Features.Trainer.GetTrainerProfile;
+
 public class GetTrainerProfileQuery : IQuery<TrainerProfileDto?>
 {
     public int Id { get; init; }

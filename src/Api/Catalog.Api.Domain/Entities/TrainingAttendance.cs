@@ -13,7 +13,6 @@ public class TrainingAttendance
 
     private TrainingAttendance()
     {
-
     }
 
     public TrainingAttendance(Training? training, Attendance attendance)

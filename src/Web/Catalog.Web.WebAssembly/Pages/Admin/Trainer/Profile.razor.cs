@@ -40,9 +40,9 @@ public partial class Profile
     {
         try
         {
-           var profile = await TrainerClient.EditTrainerProfileByIdAsync(EditProfileRequest);
-           EditProfileRequest = ToRequest(profile);
-           Toaster.Success("Profile updated");
+            var profile = await TrainerClient.EditTrainerProfileByIdAsync(EditProfileRequest);
+            EditProfileRequest = ToRequest(profile);
+            Toaster.Success("Profile updated");
         }
         catch (Exception e)
         {

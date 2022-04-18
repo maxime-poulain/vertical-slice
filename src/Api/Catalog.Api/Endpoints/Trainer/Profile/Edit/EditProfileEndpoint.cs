@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Catalog.Api.Endpoints.Trainer.Profile.Edit;
+
 public class EditProfileEndpoint : EndpointBaseAsync.WithRequest<EditTrainerProfileCommand>.WithActionResult<TrainerProfileDto>
 {
     private readonly IMediator _mediator;

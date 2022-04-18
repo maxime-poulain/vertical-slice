@@ -13,7 +13,6 @@ public class TrainingAudience
 
     private TrainingAudience()
     {
-
     }
 
     public TrainingAudience(Training training, Audience audience) : this()

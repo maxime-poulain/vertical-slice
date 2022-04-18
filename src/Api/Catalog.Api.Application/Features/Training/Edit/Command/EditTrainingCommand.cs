@@ -13,7 +13,6 @@ public class EditTrainingCommand : CreateEditTrainingCommonCommand<EditedTrainin
 
 public class EditTrainingCommandHandler : CreateEditTrainingCommonCommandHandler<EditTrainingCommand, EditedTrainingDto>
 {
-
     public EditTrainingCommandHandler(CatalogContext catalogContext) : base(catalogContext)
     {
     }

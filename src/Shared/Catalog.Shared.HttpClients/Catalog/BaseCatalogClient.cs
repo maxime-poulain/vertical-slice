@@ -4,7 +4,6 @@ namespace Catalog.Shared.HttpClients.Catalog;
 
 public class BaseCatalogClient
 {
-
     protected Task PrepareRequestAsync(HttpClient client, HttpRequestMessage request, StringBuilder urlBuilder)
     {
         return Task.CompletedTask;

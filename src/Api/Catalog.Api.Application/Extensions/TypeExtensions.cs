@@ -8,8 +8,8 @@ public static class TypeExtensions
             return type.Name;
 
         var genericTypes = string.Join(",", type.GetGenericArguments().Select(t => t.Name).ToArray());
-        return $"{type.Name.Remove(type.Name.IndexOf('`'))}<{genericTypes}>";
 
+        return $"{type.Name.Remove(type.Name.IndexOf('`'))}<{genericTypes}>";
     }
 
     public static string GetGenericTypeName(this object @object)

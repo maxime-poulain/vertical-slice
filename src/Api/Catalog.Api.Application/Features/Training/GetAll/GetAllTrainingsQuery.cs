@@ -7,6 +7,7 @@ namespace Catalog.Api.Application.Features.Training.GetAll;
 public class GetAllTrainingsQuery : IQuery<IEnumerable<TrainingDto>>
 {
 }
+
 public class GetAllTrainingsQueryHandler : IQueryHandler<GetAllTrainingsQuery, IEnumerable<TrainingDto>>
 {
     private readonly CatalogContext _catalogContext;

@@ -10,8 +10,7 @@ public class TrainingAssignment
 
     public virtual Training? Training { get; init; }
 
-    public TrainingAssignment ()
+    public TrainingAssignment()
     {
-
     }
 }

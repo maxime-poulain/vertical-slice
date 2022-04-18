@@ -10,10 +10,8 @@ public class CreateTrainingCommand : CreateEditTrainingCommonCommand<CreatedTrai
 
 public class CreateTrainingCommandHandler : CreateEditTrainingCommonCommandHandler<CreateTrainingCommand, CreatedTrainingDto>
 {
-
     public CreateTrainingCommandHandler(CatalogContext catalogContext) : base(catalogContext)
     {
-
     }
 
     protected override Task<Domain.Entities.Training> GetOrMakeTrainingAsync(CreateTrainingCommand command)

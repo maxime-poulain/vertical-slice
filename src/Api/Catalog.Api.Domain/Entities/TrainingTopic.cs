@@ -12,7 +12,6 @@ public class TrainingTopic
 
     private TrainingTopic()
     {
-
     }
 
     public TrainingTopic(Training training, Topic topic) : this()

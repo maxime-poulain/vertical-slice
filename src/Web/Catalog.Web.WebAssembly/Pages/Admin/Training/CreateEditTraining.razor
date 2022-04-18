@@ -50,12 +50,12 @@
 
                     <SmartFormGroup Label="Topics *" HelperText="Multiple choices allowed">
                         <SmartGrid>
-                                @foreach (var topic in Topic.List)
-                                {
-                                    <SmartColumn Width="4">
-                                        <SmartCheckbox Label="@topic.Name" OnChange="args => OnTopicSelected(topic, args)" IsChecked="@(Request.Topics.Contains(topic))"></SmartCheckbox>
-                                    </SmartColumn>
-                                }
+                            @foreach (var topic in Topic.List)
+                            {
+                                <SmartColumn Width="4">
+                                    <SmartCheckbox Label="@topic.Name" OnChange="args => OnTopicSelected(topic, args)" IsChecked="@(Request.Topics.Contains(topic))"></SmartCheckbox>
+                                </SmartColumn>
+                            }
                         </SmartGrid>
                     </SmartFormGroup>
                     </Body>
@@ -70,31 +70,31 @@
                     <Body>
                     <SmartFormGroup Label="The training *" HelperText="Multiple choices allowed">
                         <SmartGrid>
-                                @foreach (var vatJustification in VatJustification.List)
-                                {
-                                    <SmartColumn>
-                                        <SmartCheckbox Label="@vatJustification.Name" OnChange="args => OnVatJustificationSelected(vatJustification, args)" IsChecked="@(Request.VatJustifications.Contains(vatJustification))"></SmartCheckbox>
-                                    </SmartColumn>
-                                }
+                            @foreach (var vatJustification in VatJustification.List)
+                            {
+                                <SmartColumn>
+                                    <SmartCheckbox Label="@vatJustification.Name" OnChange="args => OnVatJustificationSelected(vatJustification, args)" IsChecked="@(Request.VatJustifications.Contains(vatJustification))"></SmartCheckbox>
+                                </SmartColumn>
+                            }
                         </SmartGrid>
                     </SmartFormGroup>
 
                     <SmartFormGroup Label="Audience *" HelperText="Multiple choices allowed">
-                            @foreach (var audience in Audience.List)
-                            {
-                                <SmartColumn>
-                                    <SmartCheckbox Label="@audience.Name" OnChange="args => OnAudienceSelected(audience, args)" IsChecked="@(Request.Audiences.Contains(audience))"></SmartCheckbox>
-                                </SmartColumn>
-                            }
+                        @foreach (var audience in Audience.List)
+                        {
+                            <SmartColumn>
+                                <SmartCheckbox Label="@audience.Name" OnChange="args => OnAudienceSelected(audience, args)" IsChecked="@(Request.Audiences.Contains(audience))"></SmartCheckbox>
+                            </SmartColumn>
+                        }
                     </SmartFormGroup>
 
                     <SmartFormGroup Label="Attendance *" HelperText="Multiple choices allowed">
-                            @foreach (var attendance in Attendance.List)
-                            {
-                                <SmartColumn>
-                                    <SmartCheckbox Label="@attendance.Name" OnChange="args => OnAttendanceSelected(attendance, args)" IsChecked="@(Request.Attendances.Contains(attendance))"></SmartCheckbox>
-                                </SmartColumn>
-                            }
+                        @foreach (var attendance in Attendance.List)
+                        {
+                            <SmartColumn>
+                                <SmartCheckbox Label="@attendance.Name" OnChange="args => OnAttendanceSelected(attendance, args)" IsChecked="@(Request.Attendances.Contains(attendance))"></SmartCheckbox>
+                            </SmartColumn>
+                        }
                     </SmartFormGroup>
                     </Body>
                 </SmartPanel>

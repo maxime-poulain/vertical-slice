@@ -13,7 +13,6 @@ public class TrainingVatJustification
 
     private TrainingVatJustification()
     {
-
     }
 
     public TrainingVatJustification(Training? training, VatJustification? vatJustification) : this()

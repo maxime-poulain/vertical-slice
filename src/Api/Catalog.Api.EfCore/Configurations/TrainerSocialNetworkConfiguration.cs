@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Catalog.Api.EfCore.Configurations;
+
 public class TrainerSocialNetworkConfiguration : IEntityTypeConfiguration<TrainerSocialNetwork>
 {
     public void Configure(EntityTypeBuilder<TrainerSocialNetwork> builder)

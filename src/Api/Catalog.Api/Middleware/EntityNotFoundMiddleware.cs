@@ -34,7 +34,7 @@ public class EntityNotFoundMiddleware
         context.Response.WriteAsJsonAsync(new ErrorResponse()
         {
             Status = StatusCodes.Status404NotFound,
-            Errors = new []
+            Errors = new[]
             {
                 new Error("",
                     $"Entity {entityNotFoundException.EntityType.GetGenericTypeName()} with id {entityNotFoundException.EntityId} not found",

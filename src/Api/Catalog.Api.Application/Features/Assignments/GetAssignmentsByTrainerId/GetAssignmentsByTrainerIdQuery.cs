@@ -3,6 +3,7 @@ using Catalog.Api.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.Api.Application.Features.Assignments.GetAssignmentsByTrainerId;
+
 public class GetAssignmentsByTrainerIdQuery : IQuery<IEnumerable<AssignmentDto>>
 {
     /// <summary>

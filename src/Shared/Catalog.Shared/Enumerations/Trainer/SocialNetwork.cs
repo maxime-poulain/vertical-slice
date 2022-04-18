@@ -1,6 +1,7 @@
 using Ardalis.SmartEnum;
 
 namespace Catalog.Shared.Enumerations.Trainer;
+
 public class SocialNetwork : SmartEnum<SocialNetwork>
 {
     public static readonly SocialNetwork Facebook        = new(nameof(Facebook), 1);
