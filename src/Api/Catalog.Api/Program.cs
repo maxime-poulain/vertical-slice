@@ -12,6 +12,8 @@ builder.Services.AddSwagger(builder.Configuration);
 
 var app = builder.Build();
 
+await app.EnsureCreationOfDatabaseAsync(builder.Configuration);
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsProduction())
 {
