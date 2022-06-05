@@ -1,5 +1,4 @@
-﻿using Catalog.Api.Application.Features.Training.Common.CreateEdit;
-using Catalog.Api.Domain.Entities.Base;
+using Catalog.Api.Application.Features.Training.Common.CreateEdit;
 using Catalog.Api.EfCore.Context;
 
 namespace Catalog.Api.Application.Features.Training.Create.Command;
@@ -14,18 +13,12 @@ public class CreateTrainingCommandHandler : CreateEditTrainingCommonCommandHandl
     {
     }
 
-    protected override Task<Domain.Entities.TrainingAggregate.Training> GetOrMakeTrainingAsync(CreateTrainingCommand command)
+    protected override Task<Domain.Entities.TrainingAggregate.Training> GetTrainingAccordinglyToCommandAsync(CreateTrainingCommand command)
     {
-        var training = new Domain.Entities.TrainingAggregate.Training(command.Title!,
-            command.Description!,
-            command.Goal!);
+        var training = new Domain.Entities.TrainingAggregate.Training(command.Title!);
+        training.Edit(command);
 
         return Task.FromResult(training);
-    }
-
-    protected override IDomainEvent DomainEventForCurrentOperation(Domain.Entities.TrainingAggregate.Training training)
-    {
-        return new TrainingCreatedEvent(training);
     }
 
     protected override CreatedTrainingDto MakeResult(Domain.Entities.TrainingAggregate.Training training)

@@ -1,6 +1,8 @@
 using Ardalis.GuardClauses;
 using Catalog.Api.Domain.Entities.Base;
 using Catalog.Api.Domain.Entities.TrainerAggregate;
+using Catalog.Api.Domain.Entities.TrainingAggregate.Events;
+using Catalog.Api.Domain.Entities.TrainingAggregate.Message;
 using Catalog.Api.Domain.Extensions;
 using Catalog.Shared.Enumerations.Training;
 
@@ -57,11 +59,9 @@ public class Training : Entity, IEntity
         _audiences        = new HashSet<TrainingAudience>();
     }
 
-    public Training(string title, string description, string goal) : this()
+    public Training(string title) : this()
     {
-        Title        = title;
-        Description  = description;
-        Goal         = goal;
+        Title = title;
     }
 
     public TrainingAssignment Assign(Trainer trainer)
@@ -131,5 +131,24 @@ public class Training : Entity, IEntity
     public void SetVatJustifications(IEnumerable<VatJustification>? vatJustifications)
     {
         SetRelational(vatJustifications, vat => new TrainingVatJustification(this, vat), _vatJustifiations);
+    }
+
+    public void Edit(TrainingEditMessage message)
+    {
+        // Those fields cannot be null, the validation asserts that.
+        ChangeTitle(message.Title!);
+        ChangeDescription(message.Description!);
+        ChangeGoal(message.Goal!);
+
+        // Many to many tables.
+        SetTopics(message.Topics);
+        SetAttendance(message.Attendances);
+        SetVatJustifications(message.VatJustifications);
+        SetAudience(message.Audiences);
+
+        if (Id != default)
+        {
+            DomainEvents.Add(new TrainingEditedEvent(this));
+        }
     }
 }

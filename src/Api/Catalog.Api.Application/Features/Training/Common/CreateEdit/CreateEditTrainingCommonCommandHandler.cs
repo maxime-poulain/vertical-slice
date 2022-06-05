@@ -1,6 +1,4 @@
-﻿using Catalog.Api.Domain.CQS;
-using Catalog.Api.Domain.Entities.Base;
-using Catalog.Api.Domain.Entities.TrainingAggregate;
+using Catalog.Api.Domain.CQS;
 using Catalog.Api.EfCore.Context;
 
 namespace Catalog.Api.Application.Features.Training.Common.CreateEdit;
@@ -17,14 +15,7 @@ public abstract class CreateEditTrainingCommonCommandHandler<TCommand, TResponse
     /// </summary>
     /// <param name="command"></param>
     /// <returns></returns>
-    protected abstract Task<Domain.Entities.TrainingAggregate.Training> GetOrMakeTrainingAsync(TCommand command);
-
-    /// <summary>
-    /// Returns the <see cref="IDomainEvent" /> that should be published after the save.
-    /// </summary>
-    /// <param name="training">The <see cref="Training" /> to whom this event is linked.</param>
-    /// <returns>A domain event to be published after a successful save.</returns>
-    protected abstract IDomainEvent DomainEventForCurrentOperation(Domain.Entities.TrainingAggregate.Training training);
+    protected abstract Task<Domain.Entities.TrainingAggregate.Training> GetTrainingAccordinglyToCommandAsync(TCommand command);
 
     /// <summary>
     /// Build the result of the current operation.
@@ -40,9 +31,8 @@ public abstract class CreateEditTrainingCommonCommandHandler<TCommand, TResponse
 
     public async Task<TResponse> Handle(TCommand command, CancellationToken cancellationToken)
     {
-        var training = await GetOrMakeTrainingAsync(command);
-        UpdateFields(training, command);
-        training.DomainEvents.Add(DomainEventForCurrentOperation(training));
+        var training = await GetTrainingAccordinglyToCommandAsync(command);
+        training.Edit(command);
         if (training.Id == default)
         {
             CatalogContext.Training.Add(training);
@@ -50,19 +40,5 @@ public abstract class CreateEditTrainingCommonCommandHandler<TCommand, TResponse
 
         await CatalogContext.SaveChangesAsync(cancellationToken);
         return MakeResult(training);
-    }
-
-    private void UpdateFields(Domain.Entities.TrainingAggregate.Training training, CreateEditTrainingCommonCommand<TResponse> command)
-    {
-        // Those fields cannot be null, the validation asserts that.
-        training.ChangeTitle(command.Title!);
-        training.ChangeDescription(command.Description!);
-        training.ChangeGoal(command.Goal!);
-
-        // Many to many tables.
-        training.SetTopics(command.Topics);
-        training.SetAttendance(command.Attendances);
-        training.SetVatJustifications(command.VatJustifications);
-        training.SetAudience(command.Audiences);
     }
 }

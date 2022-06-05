@@ -1,6 +1,6 @@
 ﻿using Catalog.Api.Domain.Entities.Base;
 
-namespace Catalog.Api.Application.Features.Training.Edit;
+namespace Catalog.Api.Domain.Entities.TrainingAggregate.Events;
 
 public class TrainingEditedEvent : IDomainEvent
 {

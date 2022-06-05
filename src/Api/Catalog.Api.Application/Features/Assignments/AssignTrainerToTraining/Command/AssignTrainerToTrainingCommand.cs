@@ -1,4 +1,4 @@
-﻿using System.Linq.Expressions;
+using System.Linq.Expressions;
 using Catalog.Api.Domain.CQS;
 using Catalog.Api.Domain.Entities;
 using Catalog.Api.Domain.Entities.TrainingAggregate;

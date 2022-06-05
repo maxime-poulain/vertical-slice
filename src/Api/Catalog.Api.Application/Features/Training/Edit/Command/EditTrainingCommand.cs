@@ -1,6 +1,7 @@
-﻿using Catalog.Api.Application.Common.Exceptions;
+using Catalog.Api.Application.Common.Exceptions;
 using Catalog.Api.Application.Features.Training.Common.CreateEdit;
 using Catalog.Api.Domain.Entities.Base;
+using Catalog.Api.Domain.Entities.TrainingAggregate.Events;
 using Catalog.Api.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +18,7 @@ public class EditTrainingCommandHandler : CreateEditTrainingCommonCommandHandler
     {
     }
 
-    protected override async Task<Domain.Entities.TrainingAggregate.Training> GetOrMakeTrainingAsync(EditTrainingCommand command)
+    protected override async Task<Domain.Entities.TrainingAggregate.Training> GetTrainingAccordinglyToCommandAsync(EditTrainingCommand command)
     {
         return await CatalogContext.Training
                    .Include(training => training.Topics)
@@ -37,10 +38,5 @@ public class EditTrainingCommandHandler : CreateEditTrainingCommonCommandHandler
             Description             = training.Description,
             Goal                    = training.Goal
         };
-    }
-
-    protected override IDomainEvent DomainEventForCurrentOperation(Domain.Entities.TrainingAggregate.Training training)
-    {
-        return new TrainingEditedEvent(training);
     }
 }
