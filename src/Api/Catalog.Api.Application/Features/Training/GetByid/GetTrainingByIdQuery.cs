@@ -5,7 +5,7 @@ namespace Catalog.Api.Application.Features.Training.GetById;
 
 public class GetTrainingByIdQuery : IQuery<TrainingByIdDto?>
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 }
 
 public class GetTrainingByIdQueryHandler : IQueryHandler<GetTrainingByIdQuery, TrainingByIdDto?>

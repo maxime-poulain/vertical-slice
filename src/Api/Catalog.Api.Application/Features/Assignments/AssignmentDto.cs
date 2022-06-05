@@ -1,8 +1,8 @@
-﻿namespace Catalog.Api.Application.Features.Assignments;
+namespace Catalog.Api.Application.Features.Assignments;
 
 public class AssignmentDto
 {
-    public int TrainingId { get; set; }
+    public Guid TrainingId { get; set; }
 
-    public int TrainerId { get; set; }
+    public Guid TrainerId { get; set; }
 }

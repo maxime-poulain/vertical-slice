@@ -1,10 +1,10 @@
-﻿using Catalog.Shared.Enumerations.Training;
+using Catalog.Shared.Enumerations.Training;
 
 namespace Catalog.Api.Domain.Entities.TrainingAggregate;
 
 public class TrainingTopic
 {
-    public int TrainingId { get; init; }
+    public Guid TrainingId { get; init; }
 
     public Training? Training { get; set; }
 

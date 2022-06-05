@@ -1,4 +1,4 @@
-﻿using Catalog.Api.Domain.CQS;
+using Catalog.Api.Domain.CQS;
 using Catalog.Api.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +9,7 @@ public class GetAssignmentsByTrainerIdQuery : IQuery<IEnumerable<AssignmentDto>>
     /// <summary>
     /// Trainer's id.
     /// </summary>
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 }
 
 public class GetAssignmentsByTrainerIdQueryHandler : IQueryHandler<GetAssignmentsByTrainerIdQuery, IEnumerable<AssignmentDto>>

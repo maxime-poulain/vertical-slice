@@ -1,11 +1,11 @@
-﻿using Ardalis.GuardClauses;
+using Ardalis.GuardClauses;
 using Catalog.Shared.Enumerations.Training;
 
 namespace Catalog.Api.Domain.Entities.TrainingAggregate;
 
 public class TrainingAttendance
 {
-    public int TrainingId { get; init; }
+    public Guid TrainingId { get; init; }
 
     public virtual Training? Training { get; private set; }
 

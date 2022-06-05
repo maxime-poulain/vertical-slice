@@ -4,7 +4,7 @@ namespace Catalog.Api.Application.Features.Trainer.GetTrainerProfile;
 
 public class TrainerProfileDto
 {
-    public int Id { get; init; }
+    public Guid Id { get; init; }
 
     public string? Email { get; set; }
 

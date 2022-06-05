@@ -1,6 +1,6 @@
-﻿namespace Catalog.Api.Application.Features.Trainer.CreateTrainer;
+namespace Catalog.Api.Application.Features.Trainer.CreateTrainer;
 
 public record TrainerCreationResult
 {
-    public int TrainerId { get; init; }
+    public Guid TrainerId { get; init; }
 }

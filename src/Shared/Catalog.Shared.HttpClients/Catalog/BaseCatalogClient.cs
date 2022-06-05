@@ -4,12 +4,12 @@ namespace Catalog.Shared.HttpClients.Catalog;
 
 public class BaseCatalogClient
 {
-    protected Task PrepareRequestAsync(HttpClient client, HttpRequestMessage request, StringBuilder urlBuilder)
+    protected Task PrepareRequestAsync(HttpClient client, HttpRequestMessage request, StringBuilder urlBuilder, CancellationToken cancellationToken = default)
     {
         return Task.CompletedTask;
     }
 
-    protected Task PrepareRequestAsync(HttpClient client, HttpRequestMessage request, string urlBuilder)
+    protected Task PrepareRequestAsync(HttpClient client, HttpRequestMessage request, string urlBuilder, CancellationToken cancellationToken = default)
     {
         return Task.CompletedTask;
     }

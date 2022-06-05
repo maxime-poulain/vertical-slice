@@ -6,7 +6,7 @@ namespace Catalog.Api.Application.Features.Assignments.GetAssignmentsByTrainingI
 
 public class GetAssignmentsByTrainingIdQuery : IQuery<IEnumerable<AssignmentDto>>
 {
-    public int Id { get; init; }
+    public Guid Id { get; init; }
 
     public GetAssignmentsByTrainingIdQuery()
     {

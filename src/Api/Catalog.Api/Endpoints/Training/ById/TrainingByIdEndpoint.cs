@@ -1,4 +1,4 @@
-﻿using Ardalis.ApiEndpoints;
+using Ardalis.ApiEndpoints;
 using Catalog.Api.Application.Features.Training.GetById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +15,7 @@ public class TrainingByIdEndpoint : EndpointBaseAsync.WithRequest<GetTrainingByI
         _mediator = mediator;
     }
 
-    [HttpGet("training/{Id:int}")]
+    [HttpGet("training/{Id:guid}")]
     [SwaggerOperation(
         Summary     = "Gets a training by its id",
         Description = "Gets a training by its id",

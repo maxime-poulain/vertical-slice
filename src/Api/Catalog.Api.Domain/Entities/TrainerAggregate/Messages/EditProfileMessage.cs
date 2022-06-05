@@ -15,7 +15,7 @@ public record TrainerCreatedEvent(Trainer trainer) : IDomainEvent
 {
     private readonly Trainer _trainer = trainer;
 
-    public int Id => _trainer.Id;
+    public Guid Id => _trainer.Id;
 }
 
 public record EditProfileMessage(string? Profession, string? Bio, string? Email, IEnumerable<(SocialNetwork SocialNetwork, string? Url)>? SocialNetworks);
@@ -24,5 +24,5 @@ public record TrainerProfileEditedEvent(Trainer _trainer) : IDomainEvent
 {
     private readonly Trainer _trainer = _trainer;
 
-    public int Id => _trainer.Id;
+    public Guid Id => _trainer.Id;
 }

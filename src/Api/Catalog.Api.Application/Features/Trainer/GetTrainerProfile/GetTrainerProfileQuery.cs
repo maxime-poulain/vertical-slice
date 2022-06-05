@@ -7,13 +7,13 @@ namespace Catalog.Api.Application.Features.Trainer.GetTrainerProfile;
 
 public class GetTrainerProfileQuery : IQuery<TrainerProfileDto?>
 {
-    public int Id { get; init; }
+    public Guid Id { get; init; }
 
     public GetTrainerProfileQuery()
     {
     }
 
-    public GetTrainerProfileQuery(int id)
+    public GetTrainerProfileQuery(Guid id)
     {
         Id = id;
     }

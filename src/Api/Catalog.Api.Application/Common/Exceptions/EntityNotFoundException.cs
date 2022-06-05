@@ -7,17 +7,17 @@ namespace Catalog.Api.Application.Common.Exceptions;
 /// </summary>
 public class EntityNotFoundException : Exception
 {
-    public int EntityId { get; }
+    public Guid EntityId { get; }
 
     public Type EntityType { get; } = null!;
 
-    public EntityNotFoundException(int entityId, Type entityType) : base(ErrorMessage(entityId, entityType))
+    public EntityNotFoundException(Guid entityId, Type entityType) : base(ErrorMessage(entityId, entityType))
     {
         EntityId   = entityId;
         EntityType = entityType;
     }
 
-    private static string ErrorMessage(int entityId, Type entityType)
+    private static string ErrorMessage(Guid entityId, Type entityType)
     {
         return $"Entity {entityType.FullName ?? string.Empty} with id {entityId} not found";
     }

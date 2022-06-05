@@ -16,7 +16,7 @@ public class TrainingWithDetailsByIdEndpoint : EndpointBaseAsync.WithRequest<Get
         _mediator = mediator;
     }
 
-    [HttpGet("training/{Id:int}/withdetails")]
+    [HttpGet("training/{Id:guid}/withdetails")]
     [SwaggerOperation(OperationId = "TrainingByIdWithDetails", Tags = new[] { "Training" })]
     [ProducesResponseType(typeof(DetailedTrainingDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]

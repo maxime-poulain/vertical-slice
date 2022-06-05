@@ -19,7 +19,7 @@ public partial class Profile
 
     protected override async Task OnInitializedAsync()
     {
-        var profile = await TrainerClient.GetTrainerProfileByIdAsync(1);
+        var profile = await TrainerClient.GetTrainerProfileByIdAsync(Guid.Parse("3D915EC8-45A9-47CC-9BE7-765473BD29F3"));
         Name = $"{profile.Firstname} {profile.Lastname}";
         EditProfileRequest = ToRequest(profile);
     }

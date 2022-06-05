@@ -1,13 +1,13 @@
-﻿using Catalog.Api.Domain.Entities.Base;
+using Catalog.Api.Domain.Entities.Base;
 
 namespace Catalog.Api.Application.Features.Trainer.Delete;
 
 public class TrainerDeleteEvent : IDomainEvent
 {
-    private readonly int _trainerId;
+    private Guid TrainerId { get; }
 
-    public TrainerDeleteEvent(int trainerId)
+    public TrainerDeleteEvent(Guid trainerId)
     {
-        _trainerId = trainerId;
+        TrainerId = trainerId;
     }
 }

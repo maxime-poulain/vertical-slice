@@ -15,7 +15,7 @@ public class TrainingDeletionEndpoint : EndpointBaseAsync.WithRequest<DeleteTrai
         _mediator = mediator;
     }
 
-    [HttpDelete("training/{Id:int}")]
+    [HttpDelete("training/{Id:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]

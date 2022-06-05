@@ -11,7 +11,7 @@ namespace Catalog.Api.Application.Features.Trainer.EditProfile.Command;
 
 public class EditTrainerProfileCommand : ICommand<Unit>
 {
-    public int Id { set; get; }
+    public Guid Id { set; get; }
 
     public string? Profession { get; set; }
 

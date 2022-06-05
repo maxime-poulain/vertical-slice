@@ -1,4 +1,4 @@
-﻿using Ardalis.ApiEndpoints;
+using Ardalis.ApiEndpoints;
 using Catalog.Api.Application.Features.Assignments;
 using Catalog.Api.Application.Features.Assignments.GetAssignmentsByTrainingId;
 using MediatR;
@@ -16,7 +16,7 @@ public class AssignmentByTrainingIdEndpoint : EndpointBaseAsync.WithRequest<GetA
         _mediator = mediator;
     }
 
-    [HttpGet("training/{Id:int}/assignment")]
+    [HttpGet("training/{Id:guid}/assignment")]
     [SwaggerOperation(
         Summary     = "Gets every assignments of a given training",
         Description = "Gets every assignments of a given training",

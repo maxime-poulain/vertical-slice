@@ -9,7 +9,7 @@ namespace Catalog.Api.Application.Features.Training.Edit.Command;
 
 public class EditTrainingCommand : CreateEditTrainingCommonCommand<EditedTrainingDto>
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 }
 
 public class EditTrainingCommandHandler : CreateEditTrainingCommonCommandHandler<EditTrainingCommand, EditedTrainingDto>

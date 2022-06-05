@@ -4,7 +4,7 @@ namespace Catalog.Api.Domain.Entities.TrainerAggregate;
 
 public class TrainerSocialNetwork
 {
-    public int TrainerId { get; private set; }
+    public Guid TrainerId { get; private set; }
 
     public SocialNetwork SocialNetwork { get; private set; } = null!;
 

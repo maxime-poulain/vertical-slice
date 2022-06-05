@@ -4,7 +4,7 @@ namespace Catalog.Api.Application.Features.Training.GetAll;
 
 public class TrainingDto
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     public string? Description { get; set; }
 

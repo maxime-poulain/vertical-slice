@@ -5,7 +5,7 @@ namespace Catalog.Api.Domain.Entities.TrainingAggregate;
 
 public class TrainingAudience
 {
-    public int TrainingId { get; }
+    public Guid TrainingId { get; }
 
     public Training? Training { get; private set; }
 

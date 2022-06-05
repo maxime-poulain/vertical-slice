@@ -15,7 +15,7 @@ public class DeleteTrainerEndpoint : EndpointBaseAsync.WithRequest<DeleteTrainer
         _mediator = mediator;
     }
 
-    [HttpDelete($"trainer/{{{nameof(DeleteTrainerCommand.Id)}:int}}")]
+    [HttpDelete($"trainer/{{{nameof(DeleteTrainerCommand.Id)}:guid}}")]
     [SwaggerOperation(Summary = "Deletes a trainer by its id",
         Description = "Deletes a trainer by its id",
         OperationId = "DeleteTrainer",

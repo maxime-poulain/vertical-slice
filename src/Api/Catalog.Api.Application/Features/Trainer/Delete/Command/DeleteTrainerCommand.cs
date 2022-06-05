@@ -1,4 +1,4 @@
-﻿using Catalog.Api.Domain.CQS;
+using Catalog.Api.Domain.CQS;
 using Catalog.Api.EfCore.Context;
 using Catalog.Api.EfCore.Extensions;
 
@@ -6,7 +6,7 @@ namespace Catalog.Api.Application.Features.Trainer.Delete.Command;
 
 public class DeleteTrainerCommand : ICommand<bool>
 {
-    public int Id { get; init; }
+    public Guid Id { get; init; }
 }
 
 public class DeleteTrainerCommandHandler : ICommandHandler<DeleteTrainerCommand, bool>

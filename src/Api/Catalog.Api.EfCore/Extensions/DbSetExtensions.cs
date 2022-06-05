@@ -17,7 +17,7 @@ public static class DbSetExtensions
     /// <param name="disableTracking"><see langword="bool" /> to indicate if the change tracker should track or not the found entity.</param>
     /// <param name="cancellationToken">An optional token to cancel the operation. Default value is <see cref="CancellationToken.None" />.</param>
     /// <returns> A task representing the asynchronous operations. The task result is a <see cref="Nullable{T}" /> with T being an <see cref="IEntity" />.</returns>
-    public static async Task<TEntity?> GetByIdAsync<TEntity>(this DbSet<TEntity> entityDbSet, int id, bool disableTracking = false, CancellationToken cancellationToken = default) where TEntity : class, IEntity
+    public static async Task<TEntity?> GetByIdAsync<TEntity>(this DbSet<TEntity> entityDbSet, Guid id, bool disableTracking = false, CancellationToken cancellationToken = default) where TEntity : class, IEntity
     {
         if (disableTracking)
         {
@@ -28,7 +28,7 @@ public static class DbSetExtensions
     }
 
     public static async Task<TEntity?> GetByIdAsync<TEntity>(this DbSet<TEntity> entityDbSet,
-        int id,
+        Guid id,
         Expression<Func<TEntity, bool>> wherePredicate,
         bool disableTracking = false,
         CancellationToken cancellationToken = default)
@@ -73,7 +73,7 @@ public static class DbSetExtensions
     /// <param name="id">The id of the <see cref="IEntity" /> to look for.</param>
     /// <param name="cancellationToken">An optional token to cancel the operation. Default value is <see cref="CancellationToken.None" />.</param>
     /// <returns>True if the entity exists false otherwise.</returns>
-    public static async Task<bool> ExistsAsync<TEntity>(this DbSet<TEntity> entityDbSet, int id, CancellationToken cancellationToken = default) where TEntity : class, IEntity
+    public static async Task<bool> ExistsAsync<TEntity>(this DbSet<TEntity> entityDbSet, Guid id, CancellationToken cancellationToken = default) where TEntity : class, IEntity
     {
         return await entityDbSet.AnyAsync(entity => entity.Id == id, cancellationToken);
     }
@@ -86,7 +86,7 @@ public static class DbSetExtensions
     /// <param name="ids">The set of ids that should exist.</param>
     /// <param name="cancellationToken">A token to cancel the operation.</param>
     /// <returns>True if every supplied <paramref name="ids" /> exist, false otherwise.</returns>
-    public static async Task<bool> ExistsAsync<TEntity>(this DbSet<TEntity> entityDbSet, IEnumerable<int> ids, CancellationToken cancellationToken = default) where TEntity : class, IEntity
+    public static async Task<bool> ExistsAsync<TEntity>(this DbSet<TEntity> entityDbSet, IEnumerable<Guid> ids, CancellationToken cancellationToken = default) where TEntity : class, IEntity
     {
         return await entityDbSet.CountAsync(entity => ids.Contains(entity.Id), cancellationToken) == ids.Count();
     }

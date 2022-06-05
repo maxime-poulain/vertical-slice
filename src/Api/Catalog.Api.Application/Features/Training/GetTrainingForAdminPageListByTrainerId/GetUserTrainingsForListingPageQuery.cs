@@ -6,7 +6,7 @@ namespace Catalog.Api.Application.Features.Training.GetTrainingForAdminPageListB
 
 public class GetUserTrainingsForListingPageQuery : IQuery<IEnumerable<TrainingForAdminPageDto>>
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 }
 
 public class GetUserTrainingsForListingPageQueryHandler : IQueryHandler<GetUserTrainingsForListingPageQuery, IEnumerable<TrainingForAdminPageDto>>

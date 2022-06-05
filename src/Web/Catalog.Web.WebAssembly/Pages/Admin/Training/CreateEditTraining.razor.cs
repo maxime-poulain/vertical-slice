@@ -15,7 +15,7 @@ public partial class CreateEditTraining : ComponentBase
     public EditTrainingCommand Request { get; set; } = new();
 
     [Parameter]
-    public int? Id { get; set; }
+    public Guid? Id { get; set; }
 
     [Inject]
     public ITrainingClient TrainingClient { get; private set; } = default!;
@@ -60,7 +60,7 @@ public partial class CreateEditTraining : ComponentBase
             }
             catch (Exception)
             {
-                Id = -1;
+                Id = null;
                 Toaster.Error("Training sheet could not be retrieved. Please try again later.");
             }
         }
@@ -121,7 +121,7 @@ public partial class CreateEditTraining : ComponentBase
         }
         else
         {
-            Id = -1;
+            Id = null;
             Toaster.Error("An unexpected exception occurred, please try later");
         }
 
@@ -145,10 +145,7 @@ public partial class CreateEditTraining : ComponentBase
 
     private void SetTitle()
     {
-        if (Id != -1)
-        {
-            Title ??= Id == default ? "New training" : "Edition of training " + Request.Title;
-        }
+        Title ??= Id == default ? "New training" : "Edition of training " + Request.Title;
     }
 
     private void SelectCheckbox<T>(SmartEnum<T> @enum, ICollection<int> set, ChangeEventArgs changeEventArgs) where T : SmartEnum<T, int>

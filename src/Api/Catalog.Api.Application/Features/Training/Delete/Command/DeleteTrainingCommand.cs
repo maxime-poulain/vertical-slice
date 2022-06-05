@@ -6,7 +6,7 @@ namespace Catalog.Api.Application.Features.Training.Delete.Command;
 
 public class DeleteTrainingCommand : ICommand<bool>
 {
-    public int Id { get; init; }
+    public Guid Id { get; init; }
 }
 
 public class DeleteTrainingCommandHandler : ICommandHandler<DeleteTrainingCommand, bool>

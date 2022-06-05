@@ -4,9 +4,9 @@ namespace Catalog.Api.Application.Features.Trainer.EditProfile;
 
 public class TrainerProfileEditedEvent : IDomainEvent
 {
-    public int Id { get; }
+    public Guid Id { get; }
 
-    public TrainerProfileEditedEvent(int trainerId)
+    public TrainerProfileEditedEvent(Guid trainerId)
     {
         Id = trainerId;
     }

@@ -1,4 +1,3 @@
-using Catalog.Api.Domain.Entities;
 using Catalog.Api.Domain.Entities.TrainerAggregate;
 using Catalog.Api.Domain.Entities.TrainerAggregate.Messages;
 using Catalog.Api.EfCore.Context;
@@ -9,12 +8,12 @@ public static class SeedingOperationExtensions
 {
     public static async Task SeedDefaultTrainerAsync(this CatalogContext catalogContext)
     {
-        if (!await catalogContext.Trainer.ExistsAsync(1))
+        if (!await catalogContext.Trainer.ExistsAsync(Guid.Parse("3D915EC8-45A9-47CC-9BE7-765473BD29F3")))
         {
             var trainer = Default();
 
             // We need to make sure the id of the trainer is one.
-            catalogContext.Entry(trainer).Property(entity => entity.Id).CurrentValue = 1;
+            catalogContext.Entry(trainer).Property(entity => entity.Id).CurrentValue = Guid.Parse("3D915EC8-45A9-47CC-9BE7-765473BD29F3");
 
             await catalogContext.InsertAsync(trainer);
         }

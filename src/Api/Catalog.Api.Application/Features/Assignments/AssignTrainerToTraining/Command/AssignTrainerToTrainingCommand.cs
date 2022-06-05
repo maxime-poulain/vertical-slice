@@ -9,9 +9,9 @@ namespace Catalog.Api.Application.Features.Assignments.AssignTrainerToTraining.C
 
 public class AssignTrainerToTrainingCommand : ICommand<AssignmentDto>
 {
-    public int TrainingId { get; init; }
+    public Guid TrainingId { get; init; }
 
-    public int TrainerId { get; init; }
+    public Guid TrainerId { get; init; }
 }
 
 public class AssignTrainerToTrainingCommandHandler : ICommandHandler<AssignTrainerToTrainingCommand, AssignmentDto>

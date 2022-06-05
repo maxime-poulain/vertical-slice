@@ -1,11 +1,11 @@
-﻿using Ardalis.SmartEnum;
+using Ardalis.SmartEnum;
 using Catalog.Api.Domain.Extensions;
 
 namespace Catalog.Api.Domain.Entities.Base;
 
 public class Entity : IEntity
 {
-    public int Id { get; protected set; }
+    public Guid Id { get; protected set; }
 
     public List<IDomainEvent> DomainEvents { get; } = new();
 
@@ -61,13 +61,13 @@ public class Entity : IEntity
 
     public override int GetHashCode()
     {
-        return Id;
+        return Id.GetHashCode();
     }
 }
 
 public interface IEntity
 {
-    public int Id { get; }
+    public Guid Id { get; }
 
     public List<IDomainEvent> DomainEvents { get; }
 
