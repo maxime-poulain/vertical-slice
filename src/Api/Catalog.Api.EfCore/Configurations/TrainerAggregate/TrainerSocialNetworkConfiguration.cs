@@ -1,10 +1,9 @@
-using Catalog.Api.Domain.Entities;
 using Catalog.Api.Domain.Entities.TrainerAggregate;
 using Catalog.Shared.Enumerations.Trainer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Catalog.Api.EfCore.Configurations;
+namespace Catalog.Api.EfCore.Configurations.TrainerAggregate;
 
 public class TrainerSocialNetworkConfiguration : IEntityTypeConfiguration<TrainerSocialNetwork>
 {

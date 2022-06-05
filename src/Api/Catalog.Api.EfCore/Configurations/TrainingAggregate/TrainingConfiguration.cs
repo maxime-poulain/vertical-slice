@@ -1,8 +1,7 @@
-﻿using Catalog.Api.Domain.Entities;
-using Catalog.Api.Domain.Entities.TrainingAggregate;
+﻿using Catalog.Api.Domain.Entities.TrainingAggregate;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Catalog.Api.EfCore.Configurations;
+namespace Catalog.Api.EfCore.Configurations.TrainingAggregate;
 
 public class TrainingConfiguration : EntityConfiguration<Training>
 {

@@ -1,10 +1,9 @@
-﻿using Catalog.Api.Domain.Entities;
-using Catalog.Api.Domain.Entities.TrainingAggregate;
+﻿using Catalog.Api.Domain.Entities.TrainingAggregate;
 using Catalog.Shared.Enumerations.Training;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Catalog.Api.EfCore.Configurations;
+namespace Catalog.Api.EfCore.Configurations.TrainingAggregate;
 
 public class TrainingVatJustificationConfiguration : IEntityTypeConfiguration<TrainingVatJustification>
 {

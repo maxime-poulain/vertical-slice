@@ -3,6 +3,7 @@ using Catalog.Api.Domain.Entities.Base;
 using Catalog.Api.Domain.Entities.TrainerAggregate;
 using Catalog.Api.Domain.Entities.TrainingAggregate;
 using Catalog.Api.EfCore.Configurations;
+using Catalog.Api.EfCore.Configurations.TrainingAggregate;
 using Catalog.Api.EfCore.Extensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
