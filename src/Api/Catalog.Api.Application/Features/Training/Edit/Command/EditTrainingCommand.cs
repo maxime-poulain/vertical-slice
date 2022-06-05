@@ -17,7 +17,7 @@ public class EditTrainingCommandHandler : CreateEditTrainingCommonCommandHandler
     {
     }
 
-    protected override async Task<Domain.Entities.Training> GetOrMakeTrainingAsync(EditTrainingCommand command)
+    protected override async Task<Domain.Entities.TrainingAggregate.Training> GetOrMakeTrainingAsync(EditTrainingCommand command)
     {
         return await CatalogContext.Training
                    .Include(training => training.Topics)
@@ -25,10 +25,10 @@ public class EditTrainingCommandHandler : CreateEditTrainingCommonCommandHandler
                    .Include(training => training.Attendances)
                    .Include(training => training.Audiences)
                    .FirstOrDefaultAsync(x => x.Id == command.Id)
-                       ?? throw new EntityNotFoundException(command.Id, typeof(Domain.Entities.Training));
+                       ?? throw new EntityNotFoundException(command.Id, typeof(Domain.Entities.TrainingAggregate.Training));
     }
 
-    protected override EditedTrainingDto MakeResult(Domain.Entities.Training training)
+    protected override EditedTrainingDto MakeResult(Domain.Entities.TrainingAggregate.Training training)
     {
         return new EditedTrainingDto()
         {
@@ -39,7 +39,7 @@ public class EditTrainingCommandHandler : CreateEditTrainingCommonCommandHandler
         };
     }
 
-    protected override IDomainEvent DomainEventForCurrentOperation(Domain.Entities.Training training)
+    protected override IDomainEvent DomainEventForCurrentOperation(Domain.Entities.TrainingAggregate.Training training)
     {
         return new TrainingEditedEvent(training);
     }

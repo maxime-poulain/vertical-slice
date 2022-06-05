@@ -9,11 +9,11 @@ public class AssignTrainerToTrainingCommandValidator : AbstractValidator<AssignT
     public AssignTrainerToTrainingCommandValidator(CatalogContext catalogContext)
     {
         RuleFor(command => command.TrainerId)
-            .EntityExistsAsync<AssignTrainerToTrainingCommand, Domain.Entities.Trainer>(catalogContext)
+            .EntityExistsAsync<AssignTrainerToTrainingCommand, Domain.Entities.TrainerAggregate.Trainer>(catalogContext)
             .WithMessage((_, trainerId) => $"Trainer with id {trainerId} was not found");
 
         RuleFor(command => command.TrainingId)
-            .EntityExistsAsync<AssignTrainerToTrainingCommand, Domain.Entities.Training>(catalogContext)
+            .EntityExistsAsync<AssignTrainerToTrainingCommand, Domain.Entities.TrainingAggregate.Training>(catalogContext)
             .WithMessage((_, trainingId) => $"Training with id {trainingId} was not found");
     }
 }

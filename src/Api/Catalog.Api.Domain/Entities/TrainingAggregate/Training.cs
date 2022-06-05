@@ -1,9 +1,10 @@
 using Ardalis.GuardClauses;
 using Catalog.Api.Domain.Entities.Base;
+using Catalog.Api.Domain.Entities.TrainerAggregate;
 using Catalog.Api.Domain.Extensions;
 using Catalog.Shared.Enumerations.Training;
 
-namespace Catalog.Api.Domain.Entities;
+namespace Catalog.Api.Domain.Entities.TrainingAggregate;
 
 public class Training : Entity, IEntity
 {

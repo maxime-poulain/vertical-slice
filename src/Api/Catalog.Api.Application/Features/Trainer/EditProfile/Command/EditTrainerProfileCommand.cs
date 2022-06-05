@@ -39,7 +39,7 @@ public class EditTrainerProfileCommandHandler : ICommandHandler<EditTrainerProfi
 
         if (trainer is null)
         {
-            throw new EntityNotFoundException(command.Id, typeof(Domain.Entities.Trainer));
+            throw new EntityNotFoundException(command.Id, typeof(Domain.Entities.TrainerAggregate.Trainer));
         }
 
         var socialNetworks = command.SocialNetworks?.Select(socialNetwork => (SocialNetwork.FromValue(socialNetwork.SocialNetworkId), socialNetwork.Url));

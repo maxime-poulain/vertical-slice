@@ -30,7 +30,7 @@ public class DeleteTrainingCommandHandler : ICommandHandler<DeleteTrainingComman
         return true;
     }
 
-    private async Task RemoveFromDatabaseAsync(Domain.Entities.Training training, CancellationToken cancellationToken)
+    private async Task RemoveFromDatabaseAsync(Domain.Entities.TrainingAggregate.Training training, CancellationToken cancellationToken)
     {
         _catalogContext.Training.Remove(training);
         await _catalogContext.SaveChangesAsync(cancellationToken);

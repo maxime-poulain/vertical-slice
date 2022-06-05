@@ -27,7 +27,7 @@ public class TrainingWithDetailsByIdEndpoint : EndpointBaseAsync.WithRequest<Get
 
         if (detailedTrainingDto is null)
         {
-            throw new EntityNotFoundException(request.Id, typeof(Domain.Entities.Training));
+            throw new EntityNotFoundException(request.Id, typeof(Domain.Entities.TrainingAggregate.Training));
         }
 
         return detailedTrainingDto;

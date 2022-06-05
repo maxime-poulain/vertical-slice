@@ -1,5 +1,6 @@
 ﻿using Catalog.Api.Domain.CQS;
 using Catalog.Api.Domain.Entities.Base;
+using Catalog.Api.Domain.Entities.TrainingAggregate;
 using Catalog.Api.EfCore.Context;
 
 namespace Catalog.Api.Application.Features.Training.Common.CreateEdit;
@@ -16,21 +17,21 @@ public abstract class CreateEditTrainingCommonCommandHandler<TCommand, TResponse
     /// </summary>
     /// <param name="command"></param>
     /// <returns></returns>
-    protected abstract Task<Domain.Entities.Training> GetOrMakeTrainingAsync(TCommand command);
+    protected abstract Task<Domain.Entities.TrainingAggregate.Training> GetOrMakeTrainingAsync(TCommand command);
 
     /// <summary>
     /// Returns the <see cref="IDomainEvent" /> that should be published after the save.
     /// </summary>
-    /// <param name="training">The <see cref="Domain.Entities.Training" /> to whom this event is linked.</param>
+    /// <param name="training">The <see cref="Training" /> to whom this event is linked.</param>
     /// <returns>A domain event to be published after a successful save.</returns>
-    protected abstract IDomainEvent DomainEventForCurrentOperation(Domain.Entities.Training training);
+    protected abstract IDomainEvent DomainEventForCurrentOperation(Domain.Entities.TrainingAggregate.Training training);
 
     /// <summary>
     /// Build the result of the current operation.
     /// </summary>
-    /// <param name="training">The <see cref="Domain.Entities.Training" /> on whose the operation was applied.</param>
+    /// <param name="training">The <see cref="Training" /> on whose the operation was applied.</param>
     /// <returns>The result of the command.</returns>
-    protected abstract TResponse MakeResult(Domain.Entities.Training training);
+    protected abstract TResponse MakeResult(Domain.Entities.TrainingAggregate.Training training);
 
     protected CreateEditTrainingCommonCommandHandler(CatalogContext catalogContext)
     {
@@ -51,7 +52,7 @@ public abstract class CreateEditTrainingCommonCommandHandler<TCommand, TResponse
         return MakeResult(training);
     }
 
-    private void UpdateFields(Domain.Entities.Training training, CreateEditTrainingCommonCommand<TResponse> command)
+    private void UpdateFields(Domain.Entities.TrainingAggregate.Training training, CreateEditTrainingCommonCommand<TResponse> command)
     {
         // Those fields cannot be null, the validation asserts that.
         training.ChangeTitle(command.Title!);

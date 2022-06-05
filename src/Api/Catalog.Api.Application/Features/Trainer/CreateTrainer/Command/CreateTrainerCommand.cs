@@ -45,10 +45,10 @@ public class CreateTrainerCommandHandler : ICommandHandler<CreateTrainerCommand,
         };
     }
 
-    private Domain.Entities.Trainer MakeTrainer(CreateTrainerCommand command)
+    private Domain.Entities.TrainerAggregate.Trainer MakeTrainer(CreateTrainerCommand command)
     {
         var socialNetworks = command.SocialNetworks?.Select(s => (SocialNetwork.FromValue(s.SocialNetworkId), s.Url));
         var message = new CreateTrainerMessage(command.Firstname!, command.Lastname!, command.Profession, command.Bio, command.Email, socialNetworks);
-        return Domain.Entities.Trainer.Create(message);
+        return Domain.Entities.TrainerAggregate.Trainer.Create(message);
     }
 }

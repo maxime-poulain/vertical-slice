@@ -8,6 +8,6 @@ public class GetAssignmentsByTrainerIdQueryValidator : AbstractValidator<GetAssi
 {
     public GetAssignmentsByTrainerIdQueryValidator(CatalogContext catalogContext)
     {
-        RuleFor(query => query.Id).ThrowErrorIfEntityDoesNotExistAsync<GetAssignmentsByTrainerIdQuery, Domain.Entities.Trainer>(catalogContext);
+        RuleFor(query => query.Id).ThrowErrorIfEntityDoesNotExistAsync<GetAssignmentsByTrainerIdQuery, Domain.Entities.TrainerAggregate.Trainer>(catalogContext);
     }
 }

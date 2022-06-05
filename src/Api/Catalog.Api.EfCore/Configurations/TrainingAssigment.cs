@@ -1,4 +1,5 @@
 ﻿using Catalog.Api.Domain.Entities;
+using Catalog.Api.Domain.Entities.TrainingAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

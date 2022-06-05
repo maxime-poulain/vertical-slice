@@ -1,4 +1,5 @@
 using Catalog.Api.Domain.Entities;
+using Catalog.Api.Domain.Entities.TrainerAggregate;
 using Catalog.Api.Domain.Entities.TrainerAggregate.Messages;
 using Catalog.Api.EfCore.Context;
 

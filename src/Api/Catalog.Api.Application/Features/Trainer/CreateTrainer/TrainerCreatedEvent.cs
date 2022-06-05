@@ -4,9 +4,9 @@ namespace Catalog.Api.Application.Features.Trainer.CreateTrainer;
 
 public class TrainerCreatedEvent : IDomainEvent
 {
-    public Domain.Entities.Trainer Trainer { get; init; }
+    public Domain.Entities.TrainerAggregate.Trainer Trainer { get; init; }
 
-    public TrainerCreatedEvent(Domain.Entities.Trainer trainer)
+    public TrainerCreatedEvent(Domain.Entities.TrainerAggregate.Trainer trainer)
     {
         Trainer = trainer;
     }

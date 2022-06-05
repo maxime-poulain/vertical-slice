@@ -1,6 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using Catalog.Api.Domain.Entities;
 using Catalog.Api.Domain.Entities.Base;
+using Catalog.Api.Domain.Entities.TrainingAggregate;
 
 namespace Catalog.Api.Application.Features.Assignments.AssignTrainerToTraining;
 

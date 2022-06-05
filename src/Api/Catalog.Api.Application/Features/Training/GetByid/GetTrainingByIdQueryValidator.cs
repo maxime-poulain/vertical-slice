@@ -9,6 +9,6 @@ public class GetTrainingByIdQueryValidator : AbstractValidator<GetTrainingByIdQu
     public GetTrainingByIdQueryValidator(CatalogContext catalogContext)
     {
         RuleFor(command => command.Id)
-            .ThrowErrorIfEntityDoesNotExistAsync<GetTrainingByIdQuery, Domain.Entities.Training>(catalogContext);
+            .ThrowErrorIfEntityDoesNotExistAsync<GetTrainingByIdQuery, Domain.Entities.TrainingAggregate.Training>(catalogContext);
     }
 }

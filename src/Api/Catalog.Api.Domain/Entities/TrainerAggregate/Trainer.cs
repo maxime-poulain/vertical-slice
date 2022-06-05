@@ -1,10 +1,11 @@
 using Ardalis.GuardClauses;
 using Catalog.Api.Domain.Entities.Base;
 using Catalog.Api.Domain.Entities.TrainerAggregate.Messages;
+using Catalog.Api.Domain.Entities.TrainingAggregate;
 using Catalog.Api.Domain.Extensions;
 using Catalog.Shared.Enumerations.Trainer;
 
-namespace Catalog.Api.Domain.Entities;
+namespace Catalog.Api.Domain.Entities.TrainerAggregate;
 
 public class Trainer : Entity, IEntity
 {

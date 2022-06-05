@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Catalog.Api.Domain.CQS;
 using Catalog.Api.Domain.Entities;
+using Catalog.Api.Domain.Entities.TrainingAggregate;
 using Catalog.Api.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -55,7 +56,7 @@ public class AssignTrainerToTrainingCommandHandler : ICommandHandler<AssignTrain
         return existingAssignment;
     }
 
-    private async Task<(Domain.Entities.Training training, Domain.Entities.Trainer trainer)> GetTrainerAndTrainingByTheirIdsAsync(AssignTrainerToTrainingCommand command, CancellationToken cancellationToken)
+    private async Task<(Domain.Entities.TrainingAggregate.Training training, Domain.Entities.TrainerAggregate.Trainer trainer)> GetTrainerAndTrainingByTheirIdsAsync(AssignTrainerToTrainingCommand command, CancellationToken cancellationToken)
     {
         var trainer  = await _catalogContext.Trainer.FirstOrDefaultAsync(trainer => trainer.Id == command.TrainerId, cancellationToken);
         var training = await _catalogContext.Training.FirstOrDefaultAsync(training => training.Id == command.TrainingId, cancellationToken);

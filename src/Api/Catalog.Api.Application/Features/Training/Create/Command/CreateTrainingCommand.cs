@@ -14,21 +14,21 @@ public class CreateTrainingCommandHandler : CreateEditTrainingCommonCommandHandl
     {
     }
 
-    protected override Task<Domain.Entities.Training> GetOrMakeTrainingAsync(CreateTrainingCommand command)
+    protected override Task<Domain.Entities.TrainingAggregate.Training> GetOrMakeTrainingAsync(CreateTrainingCommand command)
     {
-        var training = new Domain.Entities.Training(command.Title!,
+        var training = new Domain.Entities.TrainingAggregate.Training(command.Title!,
             command.Description!,
             command.Goal!);
 
         return Task.FromResult(training);
     }
 
-    protected override IDomainEvent DomainEventForCurrentOperation(Domain.Entities.Training training)
+    protected override IDomainEvent DomainEventForCurrentOperation(Domain.Entities.TrainingAggregate.Training training)
     {
         return new TrainingCreatedEvent(training);
     }
 
-    protected override CreatedTrainingDto MakeResult(Domain.Entities.Training training)
+    protected override CreatedTrainingDto MakeResult(Domain.Entities.TrainingAggregate.Training training)
     {
         return new CreatedTrainingDto()
         {

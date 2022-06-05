@@ -1,6 +1,6 @@
 using Catalog.Shared.Enumerations.Trainer;
 
-namespace Catalog.Api.Domain.Entities;
+namespace Catalog.Api.Domain.Entities.TrainerAggregate;
 
 public class TrainerSocialNetwork
 {

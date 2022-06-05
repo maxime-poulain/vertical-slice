@@ -1,7 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using Catalog.Shared.Enumerations.Training;
 
-namespace Catalog.Api.Domain.Entities;
+namespace Catalog.Api.Domain.Entities.TrainingAggregate;
 
 public class TrainingVatJustification
 {

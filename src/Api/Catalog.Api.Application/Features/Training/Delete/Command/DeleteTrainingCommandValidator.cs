@@ -9,6 +9,6 @@ public class DeleteTrainingCommandValidator : AbstractValidator<DeleteTrainingCo
     public DeleteTrainingCommandValidator(CatalogContext catalogContext)
     {
         RuleFor(command => command.Id)
-            .ThrowErrorIfEntityDoesNotExistAsync<DeleteTrainingCommand, Domain.Entities.Training>(catalogContext);
+            .ThrowErrorIfEntityDoesNotExistAsync<DeleteTrainingCommand, Domain.Entities.TrainingAggregate.Training>(catalogContext);
     }
 }
