@@ -1,4 +1,4 @@
-﻿using Catalog.Api.Application.Features.Training.Create.Command;
+using Catalog.Api.Application.Features.Training.Create.Command;
 using Catalog.Api.Application.MediatR.Behaviors;
 using Catalog.Api.Application.MediatR.Behaviors.Logging;
 using MediatR;
@@ -21,6 +21,7 @@ public static class MediatRRegistration
         return services
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(QueryLoggingBehavior<,>))
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(CommandLoggingBehavior<,>))
-            .AddTransient(typeof(IPipelineBehavior<,>), typeof(NoEfTrackingDuringQueryPipelineBehavior<,>));
+            .AddTransient(typeof(IPipelineBehavior<,>), typeof(NoEfTrackingDuringQueryPipelineBehavior<,>))
+            .AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
     }
 }

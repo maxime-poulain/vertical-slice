@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Catalog.Api.Endpoints;
@@ -44,4 +44,7 @@ internal static class ErrorMapper
             Errors = errors
         };
     }
+    
+    public static IEnumerable<Error> ToErrors(this IEnumerable<ValidationFailure> failures)
+        => failures.Select(error => new Error(error.PropertyName, error.ErrorMessage, error.AttemptedValue));
 }

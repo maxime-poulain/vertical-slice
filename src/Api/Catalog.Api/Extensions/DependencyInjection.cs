@@ -1,6 +1,4 @@
-﻿using Catalog.Api.Dependency;
-using Catalog.Api.Middleware;
-using FluentValidation.AspNetCore;
+using Catalog.Api.Dependency;
 
 namespace Catalog.Api.Extensions;
 
@@ -8,15 +6,8 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddDependencies(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddApiDependencies(configuration).AddFluentValidation().AddCors();
+        services.AddApiDependencies(configuration).AddCors();
         return services;
-    }
-
-    public static IServiceCollection AddFluentValidation(this IServiceCollection service)
-    {
-        return service
-            .AddFluentValidation(options => options.RegisterValidatorsFromAssembly(typeof(Program).Assembly))
-            .AddTransient<IValidatorInterceptor, FluentValidationInterceptor>();
     }
 
     private static IServiceCollection AddCors(this IServiceCollection services)

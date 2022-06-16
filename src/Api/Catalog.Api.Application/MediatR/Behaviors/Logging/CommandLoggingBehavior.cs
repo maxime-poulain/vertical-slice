@@ -1,7 +1,8 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using Catalog.Api.Application.Common.Exceptions;
 using Catalog.Api.Application.Extensions;
 using Catalog.Api.Domain.CQS;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -25,7 +26,7 @@ public class CommandLoggingBehavior<TCommand, TResponse> : IPipelineBehavior<TCo
         {
             return await next();
         }
-        catch (Exception exception) when (exception is not EntityNotFoundException)
+        catch (Exception exception) when (exception is not EntityNotFoundException && exception is not ValidationException)
         {
             _logger.LogError(exception, "An error occurred while executing command `{id}`. {serializedQuery}", _commandId, JsonSerializer.Serialize(command));
             throw new LoggedMediatRException();
