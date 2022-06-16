@@ -75,60 +75,60 @@ public class Training : Entity, IEntity
         return assignment;
     }
 
-    public void ChangeTitle(string title)
+    internal void ChangeTitle(string title)
     {
         _title = Guard.Against.NullOrWhiteSpace(title, nameof(title));
         _title = Guard.Against.MinLength(title, 5, nameof(title));
     }
 
-    public void ChangeDescription(string description)
+    internal void ChangeDescription(string description)
     {
         _description = Guard.Against.NullOrWhiteSpace(description, nameof(description));
         _description = Guard.Against.Between(description, 30, 500, nameof(description));
     }
 
-    public void ChangeGoal(string goal)
+    internal void ChangeGoal(string goal)
     {
         _goal = Guard.Against.NullOrWhiteSpace(goal, nameof(goal));
         _goal = Guard.Against.Between(goal, 30, 500, nameof(goal));
     }
 
-    public void SetAttendance(IEnumerable<int>? attendances)
+    internal void SetAttendance(IEnumerable<int>? attendances)
     {
         SetAttendance(attendances?.Select(Attendance.FromValue));
     }
 
-    public void SetAttendance(IEnumerable<Attendance>? attendances)
+    internal void SetAttendance(IEnumerable<Attendance>? attendances)
     {
         _attendances.ReplaceWith(attendances, attendance => new TrainingAttendance(this, attendance));
     }
 
-    public void SetAudience(List<int>? requestAudiences)
+    internal void SetAudience(List<int>? requestAudiences)
     {
         SetAudience(requestAudiences?.Select(Audience.FromValue));
     }
 
-    public void SetAudience(IEnumerable<Audience>? audiences)
+    internal void SetAudience(IEnumerable<Audience>? audiences)
     {
        _audiences.ReplaceWith(audiences, audience => new TrainingAudience(this, audience));
     }
 
-    public void SetTopics(IEnumerable<int>? topics)
+    internal void SetTopics(IEnumerable<int>? topics)
     {
         SetTopics(topics?.Select(Topic.FromValue));
     }
 
-    public void SetTopics(IEnumerable<Topic>? topics)
+    internal void SetTopics(IEnumerable<Topic>? topics)
     {
         _topics.ReplaceWith(topics, topic => new TrainingTopic(this, topic));
     }
 
-    public void SetVatJustifications(IEnumerable<int>? vatJustificationIds)
+    internal void SetVatJustifications(IEnumerable<int>? vatJustificationIds)
     {
         SetVatJustifications(vatJustificationIds?.Select(VatJustification.FromValue));
     }
 
-    public void SetVatJustifications(IEnumerable<VatJustification>? vatJustifications)
+    internal void SetVatJustifications(IEnumerable<VatJustification>? vatJustifications)
     {
         _vatJustifications.ReplaceWith(vatJustifications, vat => new TrainingVatJustification(this, vat));
     }
