@@ -16,8 +16,6 @@ public class CreateTrainingCommandHandler : CreateEditTrainingCommonCommandHandl
     protected override Task<Domain.Entities.TrainingAggregate.Training> GetTrainingAccordinglyToCommandAsync(CreateTrainingCommand command)
     {
         var training = new Domain.Entities.TrainingAggregate.Training(command.Title!);
-        training.Edit(command);
-
         return Task.FromResult(training);
     }
 

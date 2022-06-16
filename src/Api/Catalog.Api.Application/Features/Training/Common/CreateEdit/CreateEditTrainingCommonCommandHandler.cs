@@ -14,11 +14,11 @@ public abstract class CreateEditTrainingCommonCommandHandler<TCommand, TResponse
     /// We need to make a new entity for the creation but retrieval from the database for edition.
     /// </summary>
     /// <param name="command"></param>
-    /// <returns></returns>
+    /// <returns>The training model that will be handled by the command.</returns>
     protected abstract Task<Domain.Entities.TrainingAggregate.Training> GetTrainingAccordinglyToCommandAsync(TCommand command);
 
     /// <summary>
-    /// Build the result of the current operation.
+    /// Builds the result of the command execution.
     /// </summary>
     /// <param name="training">The <see cref="Training" /> on whose the operation was applied.</param>
     /// <returns>The result of the command.</returns>
@@ -33,7 +33,7 @@ public abstract class CreateEditTrainingCommonCommandHandler<TCommand, TResponse
     {
         var training = await GetTrainingAccordinglyToCommandAsync(command);
         training.Edit(command);
-        if (training.Id == default)
+        if (training.IsTransient)
         {
             CatalogContext.Training.Add(training);
         }
