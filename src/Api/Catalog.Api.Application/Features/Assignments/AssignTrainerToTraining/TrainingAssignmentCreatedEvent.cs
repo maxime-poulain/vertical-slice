@@ -1,5 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using Catalog.Api.Domain.Entities;
+using Ardalis.GuardClauses;
 using Catalog.Api.Domain.Entities.Base;
 using Catalog.Api.Domain.Entities.TrainingAggregate;
 

@@ -38,7 +38,7 @@ public class Training : Entity, IEntity
     private readonly HashSet<TrainingAudience> _audiences;
     private readonly HashSet<TrainingTopic> _topics;
     private readonly HashSet<TrainingAttendance> _attendances;
-    private readonly HashSet<TrainingVatJustification> _vatJustifiations;
+    private readonly HashSet<TrainingVatJustification> _vatJustifications;
 
     public IReadOnlySet<TrainingAudience> Audiences => _audiences;
 
@@ -48,14 +48,14 @@ public class Training : Entity, IEntity
 
     public IReadOnlySet<TrainingTopic> Topics => _topics;
 
-    public IReadOnlySet<TrainingVatJustification> VatJustifications => _vatJustifiations;
+    public IReadOnlySet<TrainingVatJustification> VatJustifications => _vatJustifications;
 
     private Training()
     {
         _assignments      = new HashSet<TrainingAssignment>();
         _topics           = new HashSet<TrainingTopic>();
         _attendances      = new HashSet<TrainingAttendance>();
-        _vatJustifiations = new HashSet<TrainingVatJustification>();
+        _vatJustifications = new HashSet<TrainingVatJustification>();
         _audiences        = new HashSet<TrainingAudience>();
     }
 
@@ -130,7 +130,7 @@ public class Training : Entity, IEntity
 
     public void SetVatJustifications(IEnumerable<VatJustification>? vatJustifications)
     {
-        _vatJustifiations.ReplaceWith(vatJustifications, vat => new TrainingVatJustification(this, vat));
+        _vatJustifications.ReplaceWith(vatJustifications, vat => new TrainingVatJustification(this, vat));
     }
 
     public void Edit(TrainingEditMessage message)

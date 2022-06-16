@@ -1,6 +1,6 @@
 ﻿@page "/"
 @using Catalog.Shared.HttpClients.Catalog
-@inject ITrainingClient client
+@inject ITrainingClient _client
 
 <PageTitle>Index</PageTitle>
 
@@ -20,6 +20,6 @@ Welcome to your new app.
 
     protected override async Task OnInitializedAsync()
     {
-        Trainings = await client.AllTrainingsAsync();
+        Trainings = await _client.AllTrainingsAsync();
     }
 }

@@ -1,7 +1,5 @@
 using Catalog.Api.Application.Common.Exceptions;
 using Catalog.Api.Application.Features.Training.Common.CreateEdit;
-using Catalog.Api.Domain.Entities.Base;
-using Catalog.Api.Domain.Entities.TrainingAggregate.Events;
 using Catalog.Api.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 

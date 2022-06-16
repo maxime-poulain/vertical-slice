@@ -105,7 +105,7 @@ public partial class CreateEditTraining : ComponentBase
 
     private void ShowToast()
     {
-        var message = Id == default ? $"Training created with success" : $"Training updated with success";
+        var message = Id == default ? "Training created with success" : "Training updated with success";
         Toaster.Success(message);
     }
 

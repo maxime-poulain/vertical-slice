@@ -1,6 +1,5 @@
 using System.Linq.Expressions;
 using Catalog.Api.Domain.CQS;
-using Catalog.Api.Domain.Entities;
 using Catalog.Api.Domain.Entities.TrainingAggregate;
 using Catalog.Api.EfCore.Context;
 using Microsoft.EntityFrameworkCore;

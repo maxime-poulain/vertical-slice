@@ -11,18 +11,14 @@ public record CreateTrainerMessage(
     string? Email,
     IEnumerable<(SocialNetwork SocialNetwork, string? Url)>? SocialNetworks) : EditProfileMessage(Profession, Bio, Email, SocialNetworks);
 
-public record TrainerCreatedEvent(Trainer trainer) : IDomainEvent
+public record TrainerCreatedEvent(Trainer Trainer) : IDomainEvent
 {
-    private readonly Trainer _trainer = trainer;
-
-    public Guid Id => _trainer.Id;
+    public Guid Id => Trainer.Id;
 }
 
 public record EditProfileMessage(string? Profession, string? Bio, string? Email, IEnumerable<(SocialNetwork SocialNetwork, string? Url)>? SocialNetworks);
 
-public record TrainerProfileEditedEvent(Trainer _trainer) : IDomainEvent
+public record TrainerProfileEditedEvent(Trainer Trainer) : IDomainEvent
 {
-    private readonly Trainer _trainer = _trainer;
-
-    public Guid Id => _trainer.Id;
+    public Guid Id => Trainer.Id;
 }

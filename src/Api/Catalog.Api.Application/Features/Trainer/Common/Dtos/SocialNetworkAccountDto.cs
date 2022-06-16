@@ -1,4 +1,3 @@
-using Catalog.Api.Domain.Entities;
 using Catalog.Api.Domain.Entities.TrainerAggregate;
 
 namespace Catalog.Api.Application.Features.Trainer.Common.Dtos;

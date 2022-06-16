@@ -25,7 +25,7 @@ public class GetUserTrainingsForListingPageQueryHandler : IQueryHandler<GetUserT
             .Select(assignment => assignment.Training)
             .Select(training => new TrainingForAdminPageDto()
             {
-                Id          = training.Id,
+                Id          = training!.Id,
                 Title       = training.Title,
                 Description = training.Description,
                 Topics      = training.Topics.Select(topic => topic.Topic)

@@ -23,7 +23,7 @@ public class GetTrainerProfileEndpoint : EndpointBaseAsync.WithRequest<GetTraine
         Description = "Gets the profile of a given trainer",
         OperationId = "GetTrainerProfileById",
         Tags = new[] { "Trainer" })]
-    public override async Task<ActionResult<TrainerProfileDto>> HandleAsync([FromRoute] GetTrainerProfileQuery request, CancellationToken cancellationToken = new CancellationToken())
+    public override async Task<ActionResult<TrainerProfileDto>> HandleAsync([FromRoute] GetTrainerProfileQuery request, CancellationToken cancellationToken = default)
     {
         var profile = await _mediator.Send(request, cancellationToken);
 

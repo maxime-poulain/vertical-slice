@@ -1,4 +1,3 @@
-using System;
 using System.Linq.Expressions;
 using Catalog.Api.Domain.Entities.Base;
 using Microsoft.EntityFrameworkCore;

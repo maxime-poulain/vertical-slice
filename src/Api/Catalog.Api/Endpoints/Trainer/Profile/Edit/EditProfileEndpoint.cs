@@ -24,7 +24,7 @@ public class EditProfileEndpoint : EndpointBaseAsync.WithRequest<EditTrainerProf
         Description = "Edits the profile of a given trainer",
         OperationId = "EditTrainerProfileById",
         Tags = new[] { "Trainer" })]
-    public override async Task<ActionResult<TrainerProfileDto>> HandleAsync(EditTrainerProfileCommand request, CancellationToken cancellationToken = new CancellationToken())
+    public override async Task<ActionResult<TrainerProfileDto>> HandleAsync(EditTrainerProfileCommand request, CancellationToken cancellationToken = default)
     {
         await _mediator.Send(request, cancellationToken);
         return Ok(await _mediator.Send(new GetTrainerProfileQuery(request.Id), cancellationToken));

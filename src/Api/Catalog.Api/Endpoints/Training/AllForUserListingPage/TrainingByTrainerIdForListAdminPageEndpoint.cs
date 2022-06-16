@@ -17,7 +17,7 @@ public class TrainingByTrainerIdForListAdminPageEndpoint : EndpointBaseAsync.Wit
 
     [HttpGet("/trainer/{Id}/foruserlistingpage")]
     [SwaggerOperation(Summary = "Get all training of a trainer for the admin page", OperationId = "TrainingForAdminPageByTrainerId", Tags = new []{ "Training" })]
-    public override async Task<ActionResult<IEnumerable<TrainingForAdminPageDto>>> HandleAsync([FromRoute] GetUserTrainingsForListingPageQuery query, CancellationToken cancellationToken = new CancellationToken())
+    public override async Task<ActionResult<IEnumerable<TrainingForAdminPageDto>>> HandleAsync([FromRoute] GetUserTrainingsForListingPageQuery query, CancellationToken cancellationToken = default)
     {
         return Ok(await _mediator.Send(query, cancellationToken));
     }
