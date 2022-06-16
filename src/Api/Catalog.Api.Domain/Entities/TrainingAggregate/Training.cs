@@ -100,7 +100,7 @@ public class Training : Entity, IEntity
 
     public void SetAttendance(IEnumerable<Attendance>? attendances)
     {
-        SetRelational(attendances, attendance => new TrainingAttendance(this, attendance), _attendances);
+        _attendances.ReplaceWith(attendances, attendance => new TrainingAttendance(this, attendance));
     }
 
     public void SetAudience(List<int>? requestAudiences)
@@ -110,7 +110,7 @@ public class Training : Entity, IEntity
 
     public void SetAudience(IEnumerable<Audience>? audiences)
     {
-        SetRelational(audiences, audience => new TrainingAudience(this, audience), _audiences);
+       _audiences.ReplaceWith(audiences, audience => new TrainingAudience(this, audience));
     }
 
     public void SetTopics(IEnumerable<int>? topics)
@@ -120,7 +120,7 @@ public class Training : Entity, IEntity
 
     public void SetTopics(IEnumerable<Topic>? topics)
     {
-        SetRelational(topics, topic => new TrainingTopic(this, topic), _topics);
+        _topics.ReplaceWith(topics, topic => new TrainingTopic(this, topic));
     }
 
     public void SetVatJustifications(IEnumerable<int>? vatJustificationIds)
@@ -130,7 +130,7 @@ public class Training : Entity, IEntity
 
     public void SetVatJustifications(IEnumerable<VatJustification>? vatJustifications)
     {
-        SetRelational(vatJustifications, vat => new TrainingVatJustification(this, vat), _vatJustifiations);
+        _vatJustifiations.ReplaceWith(vatJustifications, vat => new TrainingVatJustification(this, vat));
     }
 
     public void Edit(TrainingEditMessage message)
