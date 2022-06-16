@@ -4,6 +4,8 @@ public class Entity : IEntity
 {
     public Guid Id { get; protected set; }
 
+    public bool IsTransient => Id == default;
+
     public List<IDomainEvent> DomainEvents { get; } = new();
 
     public DateTime CreatedOn { get; set; }

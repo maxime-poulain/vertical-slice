@@ -10,6 +10,8 @@ public class EntityConfiguration<T> : IEntityTypeConfiguration<T> where T : Enti
     {
         builder.Property(entity => entity.Id).ValueGeneratedOnAdd();
 
+        builder.Ignore(entity => entity.IsTransient);
+
         builder.Ignore(entity => entity.DomainEvents);
 
         builder.Property(e => e.CreatedOn)

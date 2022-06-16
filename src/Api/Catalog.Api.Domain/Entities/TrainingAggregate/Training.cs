@@ -140,13 +140,12 @@ public class Training : Entity, IEntity
         ChangeDescription(message.Description!);
         ChangeGoal(message.Goal!);
 
-        // Many to many tables.
         SetTopics(message.Topics);
         SetAttendance(message.Attendances);
         SetVatJustifications(message.VatJustifications);
         SetAudience(message.Audiences);
 
-        if (Id != default)
+        if (!IsTransient)
         {
             DomainEvents.Add(new TrainingEditedEvent(this));
         }
