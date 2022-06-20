@@ -1,6 +1,6 @@
 using Ardalis.ApiEndpoints;
-using Catalog.Api.Application.Features.Trainer.EditProfile.Command;
-using Catalog.Api.Application.Features.Trainer.GetTrainerProfile;
+using Catalog.Api.Application.Features.Trainers.EditProfile.Command;
+using Catalog.Api.Application.Features.Trainers.GetTrainerProfile;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

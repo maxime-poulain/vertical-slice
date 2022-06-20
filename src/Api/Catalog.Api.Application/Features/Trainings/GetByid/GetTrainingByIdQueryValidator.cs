@@ -1,0 +1,14 @@
+﻿using Catalog.Api.Application.Extensions.FluentValidationExtensions;
+using Catalog.Api.EfCore.Context;
+using FluentValidation;
+
+namespace Catalog.Api.Application.Features.Trainings.GetByid;
+
+public class GetTrainingByIdQueryValidator : AbstractValidator<GetTrainingByIdQuery>
+{
+    public GetTrainingByIdQueryValidator(CatalogContext catalogContext)
+    {
+        RuleFor(command => command.Id)
+            .ThrowErrorIfEntityDoesNotExistAsync<GetTrainingByIdQuery, Domain.Entities.TrainingAggregate.Training>(catalogContext);
+    }
+}

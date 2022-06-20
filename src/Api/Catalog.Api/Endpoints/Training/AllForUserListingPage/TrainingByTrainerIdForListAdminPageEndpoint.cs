@@ -1,5 +1,5 @@
 using Ardalis.ApiEndpoints;
-using Catalog.Api.Application.Features.Training.GetTrainingForAdminPageListByTrainerId;
+using Catalog.Api.Application.Features.Trainings.GetTrainingForAdminPageListByTrainerId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

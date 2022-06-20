@@ -1,5 +1,5 @@
-﻿using Ardalis.ApiEndpoints;
-using Catalog.Api.Application.Features.Trainer.Delete.Command;
+using Ardalis.ApiEndpoints;
+using Catalog.Api.Application.Features.Trainers.Delete.Command;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

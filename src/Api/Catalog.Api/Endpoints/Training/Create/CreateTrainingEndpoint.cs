@@ -1,5 +1,5 @@
-﻿using Catalog.Api.Application.Features.Training.Create;
-using Catalog.Api.Application.Features.Training.Create.Command;
+﻿using Catalog.Api.Application.Features.Trainings.Create;
+using Catalog.Api.Application.Features.Trainings.Create.Command;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

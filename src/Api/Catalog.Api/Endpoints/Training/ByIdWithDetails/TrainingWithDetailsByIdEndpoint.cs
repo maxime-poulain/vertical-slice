@@ -1,6 +1,6 @@
 using Ardalis.ApiEndpoints;
 using Catalog.Api.Application.Common.Exceptions;
-using Catalog.Api.Application.Features.Training.GetDetailedTrainingById;
+using Catalog.Api.Application.Features.Trainings.GetDetailedTrainingById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

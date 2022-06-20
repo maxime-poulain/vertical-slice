@@ -1,4 +1,4 @@
-using Catalog.Api.Application.Features.Training.Create.Command;
+using Catalog.Api.Application.Features.Trainings.Create.Command;
 using Catalog.Api.Application.MediatR.Behaviors;
 using Catalog.Api.Application.MediatR.Behaviors.Logging;
 using MediatR;

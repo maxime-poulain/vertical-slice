@@ -1,5 +1,5 @@
 ﻿using Ardalis.ApiEndpoints;
-using Catalog.Api.Application.Features.Training.GetAll;
+using Catalog.Api.Application.Features.Trainings.GetAll;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

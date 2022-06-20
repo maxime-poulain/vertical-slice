@@ -1,6 +1,6 @@
-﻿using Ardalis.ApiEndpoints;
-using Catalog.Api.Application.Features.Trainer.CreateTrainer;
-using Catalog.Api.Application.Features.Trainer.CreateTrainer.Command;
+using Ardalis.ApiEndpoints;
+using Catalog.Api.Application.Features.Trainers.CreateTrainer;
+using Catalog.Api.Application.Features.Trainers.CreateTrainer.Command;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

@@ -1,0 +1,8 @@
+using Catalog.Api.Domain.CQS;
+using Catalog.Api.Domain.Entities.TrainingAggregate.Message;
+
+namespace Catalog.Api.Application.Features.Trainings.Common.CreateEdit;
+
+public abstract class CreateEditTrainingCommonCommand<TResponse> : TrainingEditMessage, ICommand<TResponse>
+{
+}

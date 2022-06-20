@@ -1,4 +1,4 @@
-using Catalog.Api.Application.Features.Training.Create.Command;
+using Catalog.Api.Application.Features.Trainings.Create.Command;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,6 +1,6 @@
 using Ardalis.ApiEndpoints;
-using Catalog.Api.Application.Features.Training.Edit;
-using Catalog.Api.Application.Features.Training.Edit.Command;
+using Catalog.Api.Application.Features.Trainings.Edit;
+using Catalog.Api.Application.Features.Trainings.Edit.Command;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
