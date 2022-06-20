@@ -49,6 +49,15 @@ public class Trainer : Entity, IEntity
         private set => ChangeEmail(value);
     }
 
+    public string Hash { get; private set; }
+    public string Salt { get; private set; }
+
+    public void SetHashAndSalt(string hash, string password)
+    {
+        Hash = Guard.Against.NullOrWhiteSpace(hash);
+        Salt = Guard.Against.NullOrWhiteSpace(password);
+    }
+
     private readonly List<TrainingAssignment> _trainingAssignments;
 
     public IReadOnlyList<TrainingAssignment> TrainingAssignments => _trainingAssignments.AsReadOnly();
