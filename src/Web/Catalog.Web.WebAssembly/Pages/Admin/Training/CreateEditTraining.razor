@@ -26,7 +26,7 @@
         @if (ErrorMessages?.Any() == true)
         {
             <div class="u-spacer-bottom-l">
-                <Alert Messages="ErrorMessages"></Alert>
+                <SmartAlert AlertStyle="AlertStyle.Error" Messages="ErrorMessages"></SmartAlert>
             </div>
         }
         <EditForm Model="Request" OnSubmit="SubmitAsync">
